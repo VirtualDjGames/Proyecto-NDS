@@ -1,43 +1,48 @@
-﻿
-using UnityEngine;
-
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Flashlight : MonoBehaviour
-    
 {
-    public AudioSource AudioFlash;
+    private InputsMap inputs;
+
+    //public AudioSource AudioFlash;
     public bool LightActive;
-    public GameObject Light;
+    public GameObject[] Lights;
     
     void Start()
     {
-        Light.SetActive(false);
+        inputs = new InputsMap();
+        inputs.Gameplay.Enable();
+        Lights[0].SetActive(false);
+        Lights[1].SetActive(false);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (inputs.Gameplay.Flashlight.WasPressedThisFrame())
         {
             LightActive = !LightActive;
             if (LightActive)
             {
                 flashlightActive();
-                AudioFlash.Play();
+                //AudioFlash.Play();
             }
             if (!LightActive)
             {
                 flashlightInactive();
-                AudioFlash.Play();
+                //AudioFlash.Play();
             }
         }
     }
     void flashlightActive()
     {
-        Light.SetActive(true);
+        Lights[0].SetActive(true);
+        Lights[1].SetActive(true);
     }
     void flashlightInactive()
     {
-        Light.SetActive(false);
+        Lights[0].SetActive(false);
+        Lights[1].SetActive(false);
     }
 
 
