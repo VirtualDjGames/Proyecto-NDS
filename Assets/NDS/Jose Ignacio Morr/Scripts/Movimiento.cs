@@ -5,13 +5,19 @@ public class Movimiento : MonoBehaviour
 {
     CharacterController characterController;
     private InputsMap inputs;
-    
-    public float walkSpeed = 6.0f;
-    public float runSpeed = 10.0f;
+    private Rigidbody rb;
+
+    [Header("Movement")]
+    private float walkSpeed = 6.0f;
+    private float runSpeed = 10.0f;
     public float jumpSpeed = 8.0f;
+    public float crouchwalkSpeed = 3f;
+    public float crouchrunSpeed = 5.5f;
+    public float crouchYscale;
+    private float startYscale;
+    private bool isCrouching;
     public float gravity = 20.0f;
 
-    
     public Camera cam;
     private float mouseHorizontal = 3.0f;
     private float mouseVertical = 2.0f;
@@ -25,10 +31,14 @@ public class Movimiento : MonoBehaviour
     private Vector3 move = Vector3.zero;
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         characterController = GetComponent<CharacterController>();
         inputs = new InputsMap();
         inputs.Gameplay.Enable();
         Cursor.lockState = CursorLockMode.Locked;
+
+        startYscale = transform.localScale.y;
+        isCrouching = false;
 
     }
 
@@ -47,9 +57,10 @@ public class Movimiento : MonoBehaviour
 
         if (characterController.isGrounded)
         {
+            //Moving - Moverse
             move = inputs.Gameplay.Walk.ReadValue<Vector3>();
 
-
+            //Running - Corriendo
             if (inputs.Gameplay.Run.IsPressed())
             {
                 move = transform.TransformDirection(move) * runSpeed;
@@ -59,9 +70,29 @@ public class Movimiento : MonoBehaviour
                 move = transform.TransformDirection(move) * walkSpeed;
             }
 
+            //Jumping - Saltando
             if (inputs.Gameplay.Jump.WasPressedThisFrame())
             {
                 move.y = jumpSpeed;
+            }
+
+            //Crouching - Agacharse
+            if(inputs.Gameplay.Crouch.WasPressedThisFrame() && !isCrouching)
+            {
+                transform.localScale = new Vector3(transform.localScale.x, crouchYscale, transform.localScale.z);
+                rb.AddForce(Vector3.down * 10f, ForceMode.Impulse);
+                isCrouching = true;
+
+                walkSpeed = crouchwalkSpeed;
+                runSpeed = crouchrunSpeed;
+            }
+            else if (inputs.Gameplay.Crouch.WasPressedThisFrame() && isCrouching)
+            {
+                transform.localScale = new Vector3(transform.localScale.x, startYscale, transform.localScale.z);
+                isCrouching = false;
+
+                walkSpeed = 6f;
+                runSpeed = 10f;
             }
         }
         move.y -= gravity * Time.deltaTime;
