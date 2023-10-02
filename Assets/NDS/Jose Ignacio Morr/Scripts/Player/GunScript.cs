@@ -22,22 +22,25 @@ public class GunScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Verifica si está recargando
-        if (isReloading)
+        if(Time.timeScale == 1) //Si el juego no esta pausado
         {
-            return; // Si está recargando, no puede disparar
-        }
+            // Verifica si está recargando
+            if (isReloading)
+            {
+                return; // Si está recargando, no puede disparar
+            }
 
-        // Detecta el disparo
-        if (inputs.Gameplay.Shoot.WasPressedThisFrame() && currentAmmo > 0)
-        {
-            Shoot(); // Llama a la función Shoot() si se presiona el botón de disparo y hay munición
-        }
+            // Detecta el disparo
+            if (inputs.Gameplay.Shoot.WasPressedThisFrame() && currentAmmo > 0)
+            {
+                Shoot(); // Llama a la función Shoot() si se presiona el botón de disparo y hay munición
+            }
 
-        // Detecta la recarga
-        if (inputs.Gameplay.Reload.WasPressedThisFrame())
-        {
-            StartCoroutine(Reload()); // Inicia la rutina de recarga si se presiona el botón de recarga
+            // Detecta la recarga
+            if (inputs.Gameplay.Reload.WasPressedThisFrame())
+            {
+                StartCoroutine(Reload()); // Inicia la rutina de recarga si se presiona el botón de recarga
+            }
         }
     }
 

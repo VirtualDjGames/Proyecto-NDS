@@ -6,7 +6,7 @@ public class AidKit : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(0, 0, 1);
+        transform.Rotate(0, 0, 30 * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)

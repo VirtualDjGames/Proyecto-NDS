@@ -6,7 +6,7 @@ public class BoxAmmo : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(0, 1, 0);
+        transform.Rotate(0, 30 * Time.deltaTime, 0);
     }
 
     private void OnTriggerEnter(Collider other)

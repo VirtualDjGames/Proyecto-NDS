@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Movimiento : MonoBehaviour
 {
@@ -13,8 +12,6 @@ public class Movimiento : MonoBehaviour
     public float jumpSpeed = 8.0f;
     public float crouchwalkSpeed = 3f;
     public float crouchrunSpeed = 5.5f;
-    public float crouchYscale;
-    private float startYscale;
     private bool isCrouching;
     public float gravity = 20.0f;
 
@@ -37,66 +34,67 @@ public class Movimiento : MonoBehaviour
         inputs.Gameplay.Enable();
         Cursor.lockState = CursorLockMode.Locked;
 
-        startYscale = transform.localScale.y;
         isCrouching = false;
 
     }
 
     void Update()
     {
-        h_mouse = mouseHorizontal * Input.GetAxis("Mouse X");
-        v_mouse += mouseVertical * Input.GetAxis("Mouse Y");
-
-        v_mouse = Mathf.Clamp(v_mouse, minRotation, maxRotation);
-
-
-        cam.transform.localEulerAngles = new Vector3(-v_mouse, 0, 0);
-
-        transform.Rotate(0, h_mouse, 0);
-
-
-        if (characterController.isGrounded)
+        if(Time.timeScale == 1) //Si el juego no esta pausado
         {
-            //Moving - Moverse
-            move = inputs.Gameplay.Walk.ReadValue<Vector3>();
+            h_mouse = mouseHorizontal * Input.GetAxis("Mouse X");
+            v_mouse += mouseVertical * Input.GetAxis("Mouse Y");
 
-            //Running - Corriendo
-            if (inputs.Gameplay.Run.IsPressed())
-            {
-                move = transform.TransformDirection(move) * runSpeed;
-            }
-            else
-            {
-                move = transform.TransformDirection(move) * walkSpeed;
-            }
+            v_mouse = Mathf.Clamp(v_mouse, minRotation, maxRotation);
 
-            //Jumping - Saltando
-            if (inputs.Gameplay.Jump.WasPressedThisFrame())
-            {
-                move.y = jumpSpeed;
-            }
 
-            //Crouching - Agacharse
-            if(inputs.Gameplay.Crouch.WasPressedThisFrame() && !isCrouching)
-            {
-                transform.localScale = new Vector3(transform.localScale.x, crouchYscale, transform.localScale.z);
-                rb.AddForce(Vector3.down * 10f, ForceMode.Impulse);
-                isCrouching = true;
+            cam.transform.localEulerAngles = new Vector3(-v_mouse, 0, 0);
 
-                walkSpeed = crouchwalkSpeed;
-                runSpeed = crouchrunSpeed;
-            }
-            else if (inputs.Gameplay.Crouch.WasPressedThisFrame() && isCrouching)
-            {
-                transform.localScale = new Vector3(transform.localScale.x, startYscale, transform.localScale.z);
-                isCrouching = false;
+            transform.Rotate(0, h_mouse, 0);
 
-                walkSpeed = 6f;
-                runSpeed = 10f;
+
+            if (characterController.isGrounded)
+            {
+                //Moving - Moverse
+                move = inputs.Gameplay.Walk.ReadValue<Vector3>();
+
+                //Running - Corriendo
+                if (inputs.Gameplay.Run.IsPressed())
+                {
+                    move = transform.TransformDirection(move) * runSpeed;
+                }
+                else
+                {
+                    move = transform.TransformDirection(move) * walkSpeed;
+                }
+
+                //Jumping - Saltando
+                if (inputs.Gameplay.Jump.WasPressedThisFrame())
+                {
+                    move.y = jumpSpeed;
+                }
+
+                //Crouching - Agacharse
+                if (inputs.Gameplay.Crouch.WasPressedThisFrame() && !isCrouching)
+                {
+                    characterController.height = 1.1f;
+                    isCrouching = true;
+
+                    walkSpeed = crouchwalkSpeed;
+                    runSpeed = crouchrunSpeed;
+                }
+                else if (inputs.Gameplay.Crouch.WasPressedThisFrame() && isCrouching)
+                {
+                    characterController.height = 2f;
+                    isCrouching = false;
+
+                    walkSpeed = 6f;
+                    runSpeed = 10f;
+                }
             }
+            move.y -= gravity * Time.deltaTime;
+
+            characterController.Move(move * Time.deltaTime);
         }
-        move.y -= gravity * Time.deltaTime;
-
-        characterController.Move(move * Time.deltaTime);
-    }
+    } 
 }
