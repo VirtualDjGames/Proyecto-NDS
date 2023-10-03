@@ -37,11 +37,12 @@ public class AudioManager : MonoBehaviour
 		audioSourceMusic.Play();
 	}
 
-	public void PlayAmbient(AudioClip clip, bool loop = true)
+	public void PlayAmbient(AudioClip clip, float volume = 1, bool loop = true)
 	{
 		audioSourceAmbient.loop = loop;
-		audioSourceAmbient.clip = clip;
-		audioSourceAmbient.Play();
+        audioSourceAmbient.clip = clip;
+		audioSourceAmbient.volume = volume;
+        audioSourceAmbient.Play();
     }
     public void VolumeAmbient(float volume)
     {
@@ -60,5 +61,9 @@ public class AudioManager : MonoBehaviour
 	{
 		master.SetFloat("volAmbient", Mathf.Log10(volume) * 20);
 	}
+	public void SetMasterVolume(float volume)
+    {
+		master.SetFloat("MasterAudio", Mathf.Log10(volume) * 20);
+    }
 }
 
