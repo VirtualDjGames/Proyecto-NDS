@@ -1021,7 +1021,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100024}
   m_LocalRotation: {x: -0, y: 0.6355896, z: -0, w: -0.7720271}
-  m_LocalPosition: {x: 0.18796815, y: -0.070444465, z: 0.2412505}
+  m_LocalPosition: {x: 0.177, y: -0.070444465, z: 0.242}
   m_LocalScale: {x: 0.7323333, y: 0.73233336, z: 0.7323333}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2218,13 +2218,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4981857569994857581}
   m_LocalRotation: {x: -0, y: 0.7343614, z: -0, w: -0.67875874}
-  m_LocalPosition: {x: 0.21606016, y: 3.99, z: 0.2885108}
+  m_LocalPosition: {x: -2.2107341, y: 5.43, z: -6.8147163}
   m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4981857570404060117}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 265.49298, z: 0}
 --- !u!143 &4981857569994857578
 CharacterController:
@@ -2264,6 +2264,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a323bc971276fb48a45a7f6177f4aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 4
+  hpImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  timeAttack: 0
   jumpSpeed: 8
   crouchwalkSpeed: 3
   crouchrunSpeed: 5.5
@@ -2282,7 +2289,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAmmo: 10
-  reloadTime: 1.5
+  currentReserveAmmo: 10
+  ammoUI: {fileID: 0}
+  reloadingImage: {fileID: 0}
 --- !u!114 &5395743175091705729
 MonoBehaviour:
   m_ObjectHideFlags: 0

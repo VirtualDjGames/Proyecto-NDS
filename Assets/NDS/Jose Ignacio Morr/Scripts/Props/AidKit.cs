@@ -13,8 +13,12 @@ public class AidKit : MonoBehaviour
     {
         if (other.gameObject.GetComponent<CharacterController>())
         {
-            //Añadir salud barra de salud depende de cuanto tenga
-            Destroy(gameObject);
+            if(other.gameObject.GetComponent<Movimiento>().HP < 4)
+            {
+                Movimiento.isAttack = true;
+                other.gameObject.GetComponent<Movimiento>().HP++;
+                Destroy(gameObject);
+            }
         }
     }
 }

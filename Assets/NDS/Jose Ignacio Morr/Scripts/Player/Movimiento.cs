@@ -1,10 +1,18 @@
 ﻿using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class Movimiento : MonoBehaviour
 {
     CharacterController characterController;
     private InputsMap inputs;
     private Rigidbody rb;
+
+    [Header("Health")]
+    public int HP;
+    public Image[] hpImages;
+    public static bool isAttack = false;
+    public float timeAttack;
 
     [Header("Movement")]
     private float walkSpeed = 6.0f;
@@ -95,6 +103,71 @@ public class Movimiento : MonoBehaviour
             move.y -= gravity * Time.deltaTime;
 
             characterController.Move(move * Time.deltaTime);
+
+            HpFeedbackUI();
+            HUDScript.Instance.TransitionToGray();
+
+            if (isAttack == true)
+            {
+                HUDScript.Instance.TransitionToWhite();
+                timeAttack += Time.deltaTime;
+            }
+
+            if(timeAttack >= 5f)
+            {
+                isAttack = false;
+                timeAttack = 0f;
+            }
         }
-    } 
+    }
+    
+    void HpFeedbackUI()
+    {
+        switch(HP) 
+        {
+            case 4:
+                hpImages[3].gameObject.SetActive(true);
+                hpImages[2].gameObject.SetActive(true);
+                hpImages[1].gameObject.SetActive(true);
+                hpImages[0].gameObject.SetActive(true);
+                break;
+
+            case 3:
+                hpImages[3].gameObject.SetActive(false);
+                hpImages[2].gameObject.SetActive(true);
+                hpImages[1].gameObject.SetActive(true);
+                hpImages[0].gameObject.SetActive(true);
+                break;
+
+            case 2:
+                hpImages[3].gameObject.SetActive(false);
+                hpImages[2].gameObject.SetActive(false);
+                hpImages[1].gameObject.SetActive(true);
+                hpImages[0].gameObject.SetActive(true);
+                break;
+
+            case 1:
+                hpImages[3].gameObject.SetActive(false);
+                hpImages[2].gameObject.SetActive(false);
+                hpImages[1].gameObject.SetActive(false);
+                hpImages[0].gameObject.SetActive(true);
+                break;
+
+            case 0:
+                hpImages[3].gameObject.SetActive(false);
+                hpImages[2].gameObject.SetActive(false);
+                hpImages[1].gameObject.SetActive(false);
+                hpImages[0].gameObject.SetActive(false);
+                break;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            HP--;
+            isAttack = true;
+        }
+    }
 }

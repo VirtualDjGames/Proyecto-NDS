@@ -13,7 +13,8 @@ public class BoxAmmo : MonoBehaviour
     {
         if (other.gameObject.GetComponent<CharacterController>())
         {
-            //Añadir munición
+            Movimiento.isAttack = true;
+            other.gameObject.GetComponent<GunScript>().currentReserveAmmo += 10;
             Destroy(gameObject);
         }
     }
