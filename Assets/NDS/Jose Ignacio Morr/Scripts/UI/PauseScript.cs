@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PauseScript : MonoBehaviour
 {
     private InputsMap inputs;
-    private bool isPaused = false;
+    public static bool isPaused = false;
     public CanvasGroup pausePanel;
     public CanvasGroup hudPanel;
 
