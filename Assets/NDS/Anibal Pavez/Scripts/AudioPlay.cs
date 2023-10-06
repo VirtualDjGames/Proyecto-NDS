@@ -10,7 +10,8 @@ public class AudioPlay : MonoBehaviour
     [SerializeField] private AudioClip[] SFX, Ambient, IntroMusic, MusicInGame, Steps, HeartLife;
     void Start()
     {
-        AudioManager.Instance.PlayAmbient(Ambient[0], 0.6f);
+        //Ambiente inicial
+        AudioManager.Instance.PlayAmbient(Ambient[0], 0.4f);
         characterController = GetComponent<CharacterController>();
         inputs = new InputsMap();
         inputs.Gameplay.Enable();
@@ -20,7 +21,7 @@ public class AudioPlay : MonoBehaviour
     {
         if (Movimiento.move.x < 0 || Movimiento.move.z < 0 || Movimiento.move.x > 0 || Movimiento.move.z > 0)
         {
-            
+                //Pasos  
                 AudioManager.Instance.Step(Steps[Random.Range(0, Steps.Length)]);
                 Debug.Log("Da un paso");
             
@@ -30,7 +31,9 @@ public class AudioPlay : MonoBehaviour
         {
             if (musicDeathOn)
             {
-                AudioManager.Instance.PlayMusic(MusicInGame[4]);
+                //Musica de muerte
+                AudioManager.Instance.PlayMusic(MusicInGame[4], 0.5f);
+                //Campana de muerte
                 AudioManager.Instance.PlayGlobalSoundEffect(SFX[1]);
             }
             

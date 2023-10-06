@@ -1693,39 +1693,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
         type: 3}
-      propertyPath: SFX.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
-        type: 3}
-      propertyPath: SFX.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 22dbc3e3e4a9a4846bdf0e0df3911eb5, type: 3}
-    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
-        type: 3}
       propertyPath: SFX.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: c6ac146f25156e1409388c7047df2193, type: 3}
-    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
-        type: 3}
-      propertyPath: HeartLife.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
-        type: 3}
-      propertyPath: MusicInGame.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
-        type: 3}
-      propertyPath: HeartLife.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 29dda0b825361f649a113cf0ab0cad3c, type: 3}
-    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
-        type: 3}
-      propertyPath: MusicInGame.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: 0ec2d3f2e2e22ff449c8feb48071d9b4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
