@@ -42,6 +42,7 @@ public class Movimiento : MonoBehaviour
         inputs.Gameplay.Enable();
         Cursor.lockState = CursorLockMode.Locked;
 
+        isAttack = false;
         isCrouching = false;
 
     }
@@ -103,6 +104,12 @@ public class Movimiento : MonoBehaviour
             move.y -= gravity * Time.deltaTime;
 
             characterController.Move(move * Time.deltaTime);
+
+            if(HP <= 0)
+            {
+                DeathScript.isDead = true;
+            }
+
 
             HpFeedbackUI();
             HUDScript.Instance.TransitionToGray();

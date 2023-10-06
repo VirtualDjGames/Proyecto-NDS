@@ -22,40 +22,43 @@ public class PauseScript : MonoBehaviour
 
     void Update()
     {
-        if (inputs.Gameplay.Pause.WasPressedThisFrame())
+        if (!DeathScript.isDead)
         {
-            Paused();
-        }
-
-        if (inputs.UI.Resume.WasPressedThisFrame())
-        {
-            Resume();
-        }
-
-        if(isPaused)
-        {
-            hudPanel.alpha -= Time.unscaledDeltaTime * 4;
-            pausePanel.alpha += Time.unscaledDeltaTime * 4;
-            hudPanel.interactable = false;
-            pausePanel.interactable = true;
-
-            if (hudPanel.alpha == 0f && pausePanel.alpha == 1f)
+            if (inputs.Gameplay.Pause.WasPressedThisFrame())
             {
-                hudPanel.alpha = 0f;    
-                pausePanel.alpha = 1f;
+                Paused();
             }
-        }
-        else
-        {
-            hudPanel.alpha += Time.unscaledDeltaTime * 4;
-            pausePanel.alpha -= Time.unscaledDeltaTime * 4;
-            hudPanel.interactable = true;
-            pausePanel.interactable = false;
 
-            if (hudPanel.alpha == 1f && pausePanel.alpha == 0f)
+            if (inputs.UI.Resume.WasPressedThisFrame())
             {
-                hudPanel.alpha = 1f;
-                pausePanel.alpha = 0f;
+                Resume();
+            }
+
+            if (isPaused)
+            {
+                hudPanel.alpha -= Time.unscaledDeltaTime * 4;
+                pausePanel.alpha += Time.unscaledDeltaTime * 4;
+                hudPanel.interactable = false;
+                pausePanel.interactable = true;
+
+                if (hudPanel.alpha == 0f && pausePanel.alpha == 1f)
+                {
+                    hudPanel.alpha = 0f;
+                    pausePanel.alpha = 1f;
+                }
+            }
+            else
+            {
+                hudPanel.alpha += Time.unscaledDeltaTime * 4;
+                pausePanel.alpha -= Time.unscaledDeltaTime * 4;
+                hudPanel.interactable = true;
+                pausePanel.interactable = false;
+
+                if (hudPanel.alpha == 1f && pausePanel.alpha == 0f)
+                {
+                    hudPanel.alpha = 1f;
+                    pausePanel.alpha = 0f;
+                }
             }
         }
     }
