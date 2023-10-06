@@ -35,15 +35,27 @@ public class AudioManager : MonoBehaviour
 
 		audioSourceMusic.clip = clip;
 		audioSourceMusic.Play();
-	}
+    }
 
-	public void PlayAmbient(AudioClip clip, float volume = 1, bool loop = true)
-	{
-		audioSourceAmbient.loop = loop;
+    public void PlayAmbient(AudioClip clip, float volume = 1, bool loop = true)
+    {
+        audioSourceAmbient.loop = loop;
         audioSourceAmbient.clip = clip;
-		audioSourceAmbient.volume = volume;
+        audioSourceAmbient.volume = volume;
         audioSourceAmbient.Play();
     }
+	public void Step(AudioClip clip, float volume = 1, float time = 1 )
+    {
+        if (audioSourceSFX.isPlaying == false)
+        {
+			audioSourceSFX.clip = clip;
+			audioSourceSFX.volume = volume;
+			audioSourceSFX.pitch = time;
+			audioSourceSFX.Play();
+			
+		}
+        
+	}
     public void VolumeAmbient(float volume)
     {
         audioSourceAmbient.volume = volume;

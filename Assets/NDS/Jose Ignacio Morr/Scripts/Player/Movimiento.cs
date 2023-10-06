@@ -33,7 +33,7 @@ public class Movimiento : MonoBehaviour
     float h_mouse, v_mouse;
 
 
-    private Vector3 move = Vector3.zero;
+    public static Vector3 move = Vector3.zero;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
