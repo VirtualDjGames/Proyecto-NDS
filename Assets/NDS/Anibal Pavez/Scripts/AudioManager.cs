@@ -30,11 +30,13 @@ public class AudioManager : MonoBehaviour
 	{
 		audioSourceSFX.PlayOneShot(clip, volume);
 	}
-	public void PlayMusic(AudioClip clip, float volume = 1)
+	public void PlayMusic(AudioClip clip, float volume = 1, float time = 0, bool loop = true)
     {
 
         audioSourceMusic.clip = clip;
-		audioSourceMusic.volume = volume;
+        audioSourceMusic.volume = volume;
+		audioSourceMusic.time = time;
+		audioSourceMusic.loop = loop;
         audioSourceMusic.Play();
     }
 
