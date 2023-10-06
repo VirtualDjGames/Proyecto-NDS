@@ -1691,6 +1691,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8295310913847105302, guid: 50b35e84221dc334dbd48e9ed419171a,
+        type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295310913847105302, guid: 50b35e84221dc334dbd48e9ed419171a,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295310913847105302, guid: 50b35e84221dc334dbd48e9ed419171a,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
         type: 3}
       propertyPath: SFX.Array.data[2]
