@@ -5,8 +5,9 @@ using UnityEngine;
 public class AudioPlay : MonoBehaviour
 {
     private InputsMap inputs;
+    private bool musicDeathOn = true;
     CharacterController characterController;
-    [SerializeField] private AudioClip[] SFX, Ambient, IntroMusic, MusicInGame, Steps;
+    [SerializeField] private AudioClip[] SFX, Ambient, IntroMusic, MusicInGame, Steps, HeartLife;
     void Start()
     {
         AudioManager.Instance.PlayAmbient(Ambient[0], 0.6f);
@@ -24,6 +25,16 @@ public class AudioPlay : MonoBehaviour
                 Debug.Log("Da un paso");
             
             
+        }
+        if (DeathScript.isDead)
+        {
+            if (musicDeathOn)
+            {
+                AudioManager.Instance.PlayMusic(MusicInGame[4]);
+                AudioManager.Instance.PlayGlobalSoundEffect(SFX[1]);
+            }
+            
+            musicDeathOn = false;
         }
     }
 }
