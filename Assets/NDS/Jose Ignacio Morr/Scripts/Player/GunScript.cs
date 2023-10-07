@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class GunScript : MonoBehaviour
 {
     private InputsMap inputs;
-
+    private AudioPlay AudioPlay;
+    public Animator AnimatorGun;
     public int maxAmmo = 10; // Cantidad máxima de munición activa
     private int currentAmmo; // Munición activa actual
 
@@ -25,6 +26,7 @@ public class GunScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioPlay = GetComponent<AudioPlay>() ;
         inputs = new InputsMap();
         inputs.Gameplay.Enable();
         reloadingImage.fillAmount = 0.0f;
@@ -45,6 +47,8 @@ public class GunScript : MonoBehaviour
             if (inputs.Gameplay.Shoot.WasPressedThisFrame() && currentAmmo > 0 && !isReloading && shootTime > 0.5f)
             {
                 Shoot();
+                AudioPlay.ShootingGun();
+                AnimatorGun.SetTrigger("Shoot");
                 isShooting = true;
                 shootTime = 0;
             }
@@ -52,10 +56,10 @@ public class GunScript : MonoBehaviour
             // Detecta la recarga
             if (inputs.Gameplay.Reload.WasPressedThisFrame())
             {
-                Reload();
+                Reload();              
             }
 
-            if(isShooting)
+            if (isShooting)
             {
                 HUDScript.Instance.TransitionToWhite();
             }
@@ -71,6 +75,7 @@ public class GunScript : MonoBehaviour
                 reloadingImage.gameObject.SetActive(true);
                 reloadingImage.fillAmount += Time.deltaTime;
                 reloadTime += Time.deltaTime;
+                
             }
 
             if (reloadTime > 1.5f)
@@ -119,6 +124,12 @@ public class GunScript : MonoBehaviour
         if (currentReserveAmmo > 0 && currentAmmo < maxAmmo)
         {
             isReloading = true;
+            if (reloadTime<0.1f)
+            {
+                Debug.Log("Recargando");
+                AnimatorGun.SetTrigger("Reload");
+            }
+            
         }
     }
 }

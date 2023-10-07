@@ -5,14 +5,16 @@ using UnityEngine;
 public class AudioPlay : MonoBehaviour
 {
     private InputsMap inputs;
+    GunScript GunScript;
     private bool musicDeathOn, pauseMenu, timeAlmacenado;
     private float timeMusic;
     CharacterController characterController;
-    [SerializeField] private AudioClip[] SFX, Ambient, IntroMusic, MusicInGame, Steps, HeartLife;
+    [SerializeField] public AudioClip[] SFX, ShootGunSFX, ReloadGun, Ambient, IntroMusic, MusicInGame, Steps, HeartLife;
     void Start()
     {
         //Ambiente inicial
         AudioManager.Instance.PlayAmbient(Ambient[0], 0.4f);
+        GunScript = GetComponent<GunScript>();
         AudioManager.Instance.PlayMusic(MusicInGame[0]);
         characterController = GetComponent<CharacterController>();
         inputs = new InputsMap();
@@ -27,6 +29,11 @@ public class AudioPlay : MonoBehaviour
             //Pasos  
             AudioManager.Instance.Step(Steps[Random.Range(0, Steps.Length)]);
             Debug.Log("Da un paso");
+            GunScript.AnimatorGun.SetBool("Walking", true);
+        }
+        else
+        {
+            GunScript.AnimatorGun.SetBool("Walking", false);
         }
         if (DeathScript.isDead)
         {
@@ -71,4 +78,9 @@ public class AudioPlay : MonoBehaviour
             Debug.Log("Reproduce INGAME");
         }
     }
+    public void ShootingGun()
+    {
+        AudioManager.Instance.PlayGlobalSoundEffect(ShootGunSFX[Random.Range(0, ShootGunSFX.Length)]);
+    }
+    
 }
