@@ -86,7 +86,7 @@ public class Movimiento : MonoBehaviour
                 //Crouching - Agacharse
                 if (inputs.Gameplay.Crouch.WasPressedThisFrame() && !isCrouching)
                 {
-                    characterController.height = 1.1f;
+                    characterController.height = 1.5f;
                     isCrouching = true;
 
                     walkSpeed = crouchwalkSpeed;
@@ -94,7 +94,7 @@ public class Movimiento : MonoBehaviour
                 }
                 else if (inputs.Gameplay.Crouch.WasPressedThisFrame() && isCrouching)
                 {
-                    characterController.height = 2f;
+                    characterController.height = 3.05f;
                     isCrouching = false;
 
                     walkSpeed = 6f;
