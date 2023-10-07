@@ -37,7 +37,7 @@ public class AudioPlay : MonoBehaviour
         }
         if (DeathScript.isDead)
         {
-            if (musicDeathOn)
+            if (!musicDeathOn)
             {
                 //Musica de muerte
                 AudioManager.Instance.PlayMusic(MusicInGame[4], 0.5f);
@@ -45,7 +45,7 @@ public class AudioPlay : MonoBehaviour
                 AudioManager.Instance.PlayGlobalSoundEffect(SFX[1]);
             }
 
-            musicDeathOn = false;
+            musicDeathOn = true;
         }
 
     }
