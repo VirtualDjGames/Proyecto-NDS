@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class Movimiento : MonoBehaviour
 {
@@ -31,6 +33,9 @@ public class Movimiento : MonoBehaviour
     private float minRotation = -65.0f;
     private float maxRotation = 60.0f;
     float h_mouse, v_mouse;
+
+    public VolumeProfile volumeProfile;
+    private Vignette vignetteHP;
 
 
     public static Vector3 move = Vector3.zero;
@@ -112,6 +117,7 @@ public class Movimiento : MonoBehaviour
 
 
             HpFeedbackUI();
+            HpFeedbackVignette();
             HUDScript.Instance.TransitionToGray();
 
             if (isAttack == true)
@@ -124,6 +130,47 @@ public class Movimiento : MonoBehaviour
             {
                 isAttack = false;
                 timeAttack = 0f;
+            }
+        }
+    }
+
+    void HpFeedbackVignette()
+    {
+        if (volumeProfile.TryGet(out vignetteHP))
+        {
+            switch (HP)
+            {
+                case 4:
+                    vignetteHP.intensity.value = 0f;
+                    break;
+
+                case 3:
+                    vignetteHP.intensity.value += Time.deltaTime;
+                    if (vignetteHP.intensity.value >= 0.28f)
+                    {
+                        vignetteHP.intensity.value = 0.28f;
+                    }
+                    break;
+
+                case 2:
+                    vignetteHP.intensity.value += Time.deltaTime * 0.3f;
+                    if (vignetteHP.intensity.value >= 0.36f)
+                    {
+                        vignetteHP.intensity.value = 0.36f;
+                    }
+                    break;
+
+                case 1:
+                    vignetteHP.intensity.value += Time.deltaTime * 0.3f;
+                    if (vignetteHP.intensity.value >= 0.41f)
+                    {
+                        vignetteHP.intensity.value = 0.41f;
+                    }
+                    break;
+
+                case 0:
+                        vignetteHP.intensity.value = 0.48f;
+                    break;
             }
         }
     }

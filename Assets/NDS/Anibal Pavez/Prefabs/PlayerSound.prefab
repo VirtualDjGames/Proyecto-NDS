@@ -955,11 +955,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3428850297322675276}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 90.34711, y: 51.4674, z: -55.79197}
-  m_LocalScale: {x: 1.827126, y: 1.827126, z: 1.827126}
+  m_LocalPosition: {x: 310.5264, y: 174.43294, z: -16.532543}
+  m_LocalScale: {x: 0.5414227, y: 0.5414227, z: 0.5414227}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 22973375849545816}
+  m_Father: {fileID: 3956774758918074075}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7245650487120872219
@@ -2511,6 +2511,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4508928053561469324}
   - {fileID: 4119020950918648854}
   - {fileID: 5268099618488334752}
   m_Father: {fileID: 0}
@@ -2566,6 +2567,7 @@ MonoBehaviour:
   crouchrunSpeed: 5.5
   gravity: 20
   cam: {fileID: 5554331251778809358}
+  volumeProfile: {fileID: 11400000, guid: 2e530096b629e8240991f80d3a8cf579, type: 2}
 --- !u!114 &5879474607703211866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3665,7 +3667,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2549554118529713970}
-  - {fileID: 4508928053561469324}
   - {fileID: 4941227441175045823}
   m_Father: {fileID: 5268099618488334752}
   m_RootOrder: -1
@@ -3844,7 +3845,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
