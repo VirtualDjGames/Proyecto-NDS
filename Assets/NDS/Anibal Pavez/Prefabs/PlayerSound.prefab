@@ -2644,7 +2644,7 @@ MonoBehaviour:
   audioSourceSFX: {fileID: 6227645897309683774}
   audioSourceMusic: {fileID: 8295310913847105302}
   audioSourceAmbient: {fileID: 9116547913461103295}
-  audioSteps: {fileID: 0}
+  audioSteps: {fileID: 6145048106316059388}
   master: {fileID: 24100000, guid: 4bd203c4d88133d478abd03b18cf5112, type: 2}
 --- !u!114 &8792839914158153512
 MonoBehaviour:
@@ -2672,10 +2672,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: eee801cd260327848af96398d6817bb5, type: 3}
   - {fileID: 8300000, guid: 11f2de9c7d9caea45929e0d83abd856d, type: 3}
   ReloadGun:
-  - {fileID: 8300000, guid: e7a56318498c67c489baab295a17e6a7, type: 3}
-  - {fileID: 8300000, guid: 9a08527b8550c5c46bb633dd2c0ed58f, type: 3}
   - {fileID: 8300000, guid: c9fd760eba66b7b49a5ccac68fdef52c, type: 3}
-  - {fileID: 8300000, guid: b5cecf4d1713b2d47a562cb037f0427b, type: 3}
   Ambient:
   - {fileID: 8300000, guid: 50cf5adc6f74aad47b585397ff3562bc, type: 3}
   - {fileID: 8300000, guid: f6ae27792060eb6479aa1b304928ff55, type: 3}
@@ -2688,7 +2685,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c0379083815b3f44789af224786ee2cb, type: 3}
   MusicInGame:
   - {fileID: 8300000, guid: b04b11e9473082a4d8d4f45578f50ef0, type: 3}
-  - {fileID: 8300000, guid: ad362335d9539e740839bab1a386e51c, type: 3}
+  - {fileID: 8300000, guid: e47e1088f4b9f5a4abf7b224caf93e15, type: 3}
   - {fileID: 8300000, guid: 0d915926db0302048902aef83921be2f, type: 3}
   - {fileID: 8300000, guid: 8c79c736cab384a41be6674f7dc628b5, type: 3}
   - {fileID: 8300000, guid: 0ec2d3f2e2e22ff449c8feb48071d9b4, type: 3}
@@ -2704,7 +2701,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0bc66974c41ff8c4fa15f46d21ad3548, type: 3}
   HeartLife:
   - {fileID: 8300000, guid: 29dda0b825361f649a113cf0ab0cad3c, type: 3}
-  Jump: []
+  Jump:
+  - {fileID: 8300000, guid: e708389b7a8f64a46aa12d201c187b69, type: 3}
+  - {fileID: 8300000, guid: 45bc125cb8cb195408490bec63fde615, type: 3}
 --- !u!82 &6227645897309683774
 AudioSource:
   m_ObjectHideFlags: 0
