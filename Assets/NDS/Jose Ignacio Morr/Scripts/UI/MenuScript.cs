@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour
 {
@@ -11,24 +12,27 @@ public class MenuScript : MonoBehaviour
     private bool isTimeToPlay = false;
     public CanvasGroup introScreen;
     public CanvasGroup menuScreen;
+    public CanvasGroup quitScreen;
+    public CanvasGroup darkScreen;
+    public Animator introAnim;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         //Intro
-        if(!isMenu)
+        if (!isMenu)
         {
             timeToPress += Time.deltaTime;
         }
         else
         {
-            if(!isTimeToPlay)
+            if (!isTimeToPlay)
             {
                 introScreen.alpha -= Time.deltaTime * 5;
                 introScreen.interactable = false;
@@ -38,27 +42,29 @@ public class MenuScript : MonoBehaviour
             }
         }
 
-        if(timeToPress >= 5) 
-        { 
+        if (timeToPress >= 5)
+        {
             timeToPress = 5.1f;
+            introAnim.SetBool("TextTime", true);
 
-          if(Input.anyKey && !isMenu)
-          {
+            if (Input.anyKey && !isMenu)
+            {
                 isMenu = true;
                 timeToPress = 0;
-          }
+            }
         }
 
-        if(isTimeToPlay) 
+        if (isTimeToPlay)
         {
-            menuScreen.alpha -= Time.deltaTime * 1.2f;
+            darkScreen.alpha += Time.deltaTime;
+            menuScreen.alpha -= Time.deltaTime * 1.3f;
             menuScreen.interactable = false;
             timeToGame += Time.deltaTime;
 
-            if(timeToGame >= 2)
+            if (timeToGame >= 3)
             {
                 SceneManager.LoadScene("Nivel 1");
-            }    
+            }
         }
     }
 
@@ -67,8 +73,20 @@ public class MenuScript : MonoBehaviour
         isTimeToPlay = true;
     }
 
+    public void QuitOption()
+    {
+        quitScreen.gameObject.SetActive(true);
+        quitScreen.interactable = true;
+    }
+
     public void Exit()
     {
         Application.Quit();
+    }
+
+    public void CancelExit()
+    {
+        quitScreen.gameObject.SetActive(false);
+        quitScreen.interactable = false;
     }
 }
