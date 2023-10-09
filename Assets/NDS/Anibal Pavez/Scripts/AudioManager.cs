@@ -8,9 +8,10 @@ public class AudioManager : MonoBehaviour
 	public static AudioManager Instance;
 	public AudioSource audioSourceSFX; //Efectos de sonido
 	public AudioSource audioSourceMusic; //Musica
-	public AudioSource audioSourceAmbient; //Ambiente
-										   //private AudioSource audioSourceAmbient; //Sonido ambiente EJ:LLuvia
-	public AudioMixer master;
+    public AudioSource audioSourceAmbient; //Ambiente
+	public AudioSource audioSteps; //Gestion de Pasos
+                                           //private AudioSource audioSourceAmbient; //Sonido ambiente EJ:LLuvia
+    public AudioMixer master;
 	private void Awake()
 	{
 		if (Instance == null)
@@ -26,11 +27,13 @@ public class AudioManager : MonoBehaviour
 		}
 
 	}
-	public void PlayGlobalSoundEffect(AudioClip clip, float volume = 1f)
-	{
+	public void PlayGlobalSoundEffect(AudioClip clip, float volume = 1f, float pitch = 1)
+    {
+		audioSourceSFX.pitch = pitch;
 		audioSourceSFX.PlayOneShot(clip, volume);
-	}
-	public void PlayMusic(AudioClip clip, float volume = 1, float time = 0, bool loop = true)
+		
+    }
+    public void PlayMusic(AudioClip clip, float volume = 1, float time = 0, bool loop = true)
     {
 
         audioSourceMusic.clip = clip;
@@ -47,17 +50,15 @@ public class AudioManager : MonoBehaviour
         audioSourceAmbient.volume = volume;
         audioSourceAmbient.Play();
     }
-	public void Step(AudioClip clip, float volume = 1, float time = 1 )
+	public void Step(AudioClip clip, float volume = 1, float pitch = 1)
     {
-        if (audioSourceSFX.isPlaying == false)
-        {
-			audioSourceSFX.clip = clip;
-			audioSourceSFX.volume = volume;
-			audioSourceSFX.pitch = time;
-			audioSourceSFX.Play();
-			
+        if (!audioSteps.isPlaying)
+        {       
+            audioSteps.clip = clip;
+			audioSteps.volume = volume;
+            audioSteps.pitch = pitch;
+            audioSteps.Play();
 		}
-        
 	}
     public void VolumeAmbient(float volume)
     {

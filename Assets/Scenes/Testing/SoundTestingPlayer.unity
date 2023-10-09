@@ -1611,6 +1611,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1552714316997880798, guid: 50b35e84221dc334dbd48e9ed419171a,
+        type: 3}
+      propertyPath: audioSteps
+      value: 
+      objectReference: {fileID: 2117713680}
     - target: {fileID: 2882876058493791660, guid: 50b35e84221dc334dbd48e9ed419171a,
         type: 3}
       propertyPath: m_ApplyRootMotion
@@ -1711,6 +1716,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 20.014935
       objectReference: {fileID: 0}
+    - target: {fileID: 4941227441175045823, guid: 50b35e84221dc334dbd48e9ed419171a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.95007324
+      objectReference: {fileID: 0}
     - target: {fileID: 5600247941471569037, guid: 50b35e84221dc334dbd48e9ed419171a,
         type: 3}
       propertyPath: hpImages.Array.data[0]
@@ -1808,9 +1818,49 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
         type: 3}
+      propertyPath: Jump.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
+        type: 3}
       propertyPath: SFX.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: c6ac146f25156e1409388c7047df2193, type: 3}
+    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
+        type: 3}
+      propertyPath: Jump.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: e708389b7a8f64a46aa12d201c187b69, type: 3}
+    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
+        type: 3}
+      propertyPath: Jump.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 45bc125cb8cb195408490bec63fde615, type: 3}
+    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
+        type: 3}
+      propertyPath: ReloadGun.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
+        type: 3}
+      propertyPath: ReloadGun.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: c9fd760eba66b7b49a5ccac68fdef52c, type: 3}
+    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
+        type: 3}
+      propertyPath: ReloadGun.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9a08527b8550c5c46bb633dd2c0ed58f, type: 3}
+    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
+        type: 3}
+      propertyPath: ReloadGun.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9a08527b8550c5c46bb633dd2c0ed58f, type: 3}
+    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
+        type: 3}
+      propertyPath: MusicInGame.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: e47e1088f4b9f5a4abf7b224caf93e15, type: 3}
     - target: {fileID: 9027146480213402878, guid: 50b35e84221dc334dbd48e9ed419171a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3615,3 +3665,9 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2028376000}
   m_CullTransparentMesh: 1
+--- !u!82 &2117713680 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6145048106316059388, guid: 50b35e84221dc334dbd48e9ed419171a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1102359422}
+  m_PrefabAsset: {fileID: 0}

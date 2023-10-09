@@ -7,6 +7,6 @@ public class ReloadArm : MonoBehaviour
     public AudioPlay AudioPlay;
     public void ReloadGunAudio()
     {
-        AudioManager.Instance.PlayGlobalSoundEffect(AudioPlay.ReloadGun[Random.Range(0, AudioPlay.ReloadGun.Length)]);
+        AudioManager.Instance.PlayGlobalSoundEffect(AudioPlay.ReloadGun[0], 1, 1.5f);
     }
 }

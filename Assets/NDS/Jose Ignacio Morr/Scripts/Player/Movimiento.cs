@@ -22,7 +22,7 @@ public class Movimiento : MonoBehaviour
     public float jumpSpeed = 8.0f;
     public float crouchwalkSpeed = 3f;
     public float crouchrunSpeed = 5.5f;
-    private bool isCrouching;
+    public static bool isCrouching, isRunning, isJump;
     public float gravity = 20.0f;
 
     public Camera cam;
@@ -76,9 +76,11 @@ public class Movimiento : MonoBehaviour
                 if (inputs.Gameplay.Run.IsPressed())
                 {
                     move = transform.TransformDirection(move) * runSpeed;
+                    isRunning = true;
                 }
                 else
                 {
+                    isRunning = false;
                     move = transform.TransformDirection(move) * walkSpeed;
                 }
 
@@ -86,13 +88,16 @@ public class Movimiento : MonoBehaviour
                 if (inputs.Gameplay.Jump.WasPressedThisFrame())
                 {
                     move.y = jumpSpeed;
-                }
+                    isJump = true;
+                }              
 
                 //Crouching - Agacharse
                 if (inputs.Gameplay.Crouch.WasPressedThisFrame() && !isCrouching)
                 {
                     characterController.height = 1.5f;
                     isCrouching = true;
+                    AudioPlay.pitch = 0.5f;
+                   
 
                     walkSpeed = crouchwalkSpeed;
                     runSpeed = crouchrunSpeed;
@@ -101,6 +106,7 @@ public class Movimiento : MonoBehaviour
                 {
                     characterController.height = 3.05f;
                     isCrouching = false;
+                    
 
                     walkSpeed = 6f;
                     runSpeed = 10f;

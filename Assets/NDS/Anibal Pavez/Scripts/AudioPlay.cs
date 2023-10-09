@@ -6,17 +6,18 @@ public class AudioPlay : MonoBehaviour
 {
     private InputsMap inputs;
     GunScript GunScript;
-    private bool musicDeathOn, pauseMenu, timeAlmacenado;
-    private float timeMusic;
-    CharacterController characterController;
-    [SerializeField] public AudioClip[] SFX, ShootGunSFX, ReloadGun, Ambient, IntroMusic, MusicInGame, Steps, HeartLife;
+    private bool musicDeathOn, pauseMenu, timeAlmacenado, jumpset;
+    private float timeMusic, volume;
+    public static float pitch;
+    CharacterController a;
+    [SerializeField] public AudioClip[] SFX, ShootGunSFX, ReloadGun, Ambient, IntroMusic, MusicInGame, Steps, HeartLife, Jump;
     void Start()
     {
         //Ambiente inicial
         AudioManager.Instance.PlayAmbient(Ambient[0], 0.4f);
         GunScript = GetComponent<GunScript>();
+        a = GetComponent<CharacterController>();
         AudioManager.Instance.PlayMusic(MusicInGame[0]);
-        characterController = GetComponent<CharacterController>();
         inputs = new InputsMap();
         inputs.Gameplay.Enable();
     }
@@ -25,16 +26,50 @@ public class AudioPlay : MonoBehaviour
     {
         PausedGameMenuMusic();
         if (Movimiento.move.x < 0 || Movimiento.move.z < 0 || Movimiento.move.x > 0 || Movimiento.move.z > 0)
-        {
-            //Pasos  
-            AudioManager.Instance.Step(Steps[Random.Range(0, Steps.Length)]);
-            Debug.Log("Da un paso");
-            GunScript.AnimatorGun.SetBool("Walking", true);
+        {           
+            //Velocidad de Pasos              
+            if (Movimiento.isRunning)
+            {
+                volume = 1.4f;
+                pitch = 1.5f;
+                GunScript.AnimatorGun.SetFloat("VelocityGun", 2);
+            }
+            else { pitch = 1; GunScript.AnimatorGun.SetFloat("VelocityGun", 1); volume = 1; }
+            if (Movimiento.isCrouching)
+            {
+                volume = 2.5f;
+                pitch = 0.5f;
+                GunScript.AnimatorGun.SetFloat("VelocityGun", 0.5f);
+            }
+            //Reproducir pasos
+            if (a.isGrounded)
+            {
+                AudioManager.Instance.Step(Steps[Random.Range(0, Steps.Length)], volume, pitch);
+                GunScript.AnimatorGun.SetBool("Walking", true);
+                Debug.Log("Da un paso");
+            }
         }
         else
         {
             GunScript.AnimatorGun.SetBool("Walking", false);
         }
+        //Jump
+        if (!pauseMenu)
+        {
+            if (Movimiento.isJump && !jumpset)
+            {
+                AudioManager.Instance.PlayGlobalSoundEffect(Jump[0], 2);
+                jumpset = true;
+            }
+            if (a.isGrounded && Movimiento.isJump)
+            {
+                AudioManager.Instance.PlayGlobalSoundEffect(Jump[1]);
+                Debug.Log("Salto"); Movimiento.isJump = false;
+                jumpset = false;
+            }
+        }
+       
+        
         if (DeathScript.isDead)
         {
             if (!musicDeathOn)
@@ -55,23 +90,28 @@ public class AudioPlay : MonoBehaviour
         {
             if (timeAlmacenado == false)
             {
+                AudioManager.Instance.audioSourceAmbient.Pause();
                 timeMusic = AudioManager.Instance.audioSourceMusic.time;
                 timeAlmacenado = true;
             }
             if (!pauseMenu)
             {
-                AudioManager.Instance.PlayMusic(MusicInGame[1], 1, 0, false);
+                //Musica Pausa Inicia
+                AudioManager.Instance.PlayMusic(MusicInGame[1], 1, 0, false);                
                 Debug.Log("Reproduce Pausa");
                 pauseMenu = true;
             }
             if (AudioManager.Instance.audioSourceMusic.isPlaying == false)
             {
-                AudioManager.Instance.PlayMusic(MusicInGame[2]);
+                //Se reproduce Musica Pausa Completa con volumen ajustado
+                AudioManager.Instance.PlayMusic(MusicInGame[2], 0.6f);
             }
         }
         if (PauseScript.isPaused == false && timeAlmacenado)
         {
+            //Reanudamos musica MusicaInGame y música ambiente continua sin cambios
             AudioManager.Instance.PlayMusic(MusicInGame[0], 1, timeMusic);
+            AudioManager.Instance.audioSourceAmbient.UnPause();
             timeAlmacenado = false;
             pauseMenu = false;
             timeMusic = 0;
