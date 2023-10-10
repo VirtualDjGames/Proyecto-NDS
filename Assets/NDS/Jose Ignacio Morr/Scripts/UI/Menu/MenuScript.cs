@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour
 {
@@ -20,9 +19,9 @@ public class MenuScript : MonoBehaviour
     public Animator introAnim;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame

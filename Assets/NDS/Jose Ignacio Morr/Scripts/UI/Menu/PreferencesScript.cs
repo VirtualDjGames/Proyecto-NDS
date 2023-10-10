@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class PreferencesScript : MonoBehaviour
 {
-    [Header("Audio")]
     public static float masterVolume; // Volumen maestro (0.0f a 1.0f)
     public static float musicVolume;  // Volumen de la música (0.0f a 1.0f)
     public static float effectsVolume; // Volumen de efectos (0.0f a 1.0f)
+
+    [Header("Audio")]
     public Slider masterSlider;
     public Slider musicSlider;
     public Slider effectsSlider;

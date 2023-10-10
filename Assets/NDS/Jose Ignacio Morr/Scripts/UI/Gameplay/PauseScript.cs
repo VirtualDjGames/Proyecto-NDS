@@ -10,7 +10,13 @@ public class PauseScript : MonoBehaviour
     private InputsMap inputs;
     public static bool isPaused = false;
     public CanvasGroup pausePanel;
+    public CanvasGroup quitScreen;
     public CanvasGroup hudPanel;
+    public CanvasGroup darkScreen;
+    public GameObject settingsWindow;
+
+    private bool isBackToMenu = false;
+    private float timeToMenu;
 
     void Start()
     {
@@ -60,6 +66,21 @@ public class PauseScript : MonoBehaviour
                     pausePanel.alpha = 0f;
                 }
             }
+
+            if (isBackToMenu)
+            {
+                darkScreen.alpha += Time.unscaledDeltaTime;
+                hudPanel.alpha -= Time.unscaledDeltaTime * 1.3f;
+                pausePanel.interactable = false;
+                quitScreen.gameObject.SetActive(false);
+                timeToMenu += Time.unscaledDeltaTime;
+
+                if (timeToMenu >= 3)
+                {
+                    SceneManager.LoadScene("Menu");
+                }
+            }
+
         }
     }
 
@@ -75,11 +96,42 @@ public class PauseScript : MonoBehaviour
 
     public void Resume()
     {
+        settingsWindow.SetActive(false);
+
         inputs.UI.Disable();
         inputs.Gameplay.Enable();
         isPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
 
         Time.timeScale = 1;
+    }
+
+    public void SettingsOpen()
+    {
+        settingsWindow.SetActive(true);
+    }
+
+    public void SettingsClosed()
+    {
+        settingsWindow.SetActive(false);
+    }
+
+    public void MenuOption()
+    {
+        settingsWindow.SetActive(false);
+
+        quitScreen.gameObject.SetActive(true);
+        quitScreen.interactable = true;
+    }
+
+    public void BackToMenu()
+    {
+        isBackToMenu = true;
+    }
+
+    public void CancelExit()
+    {
+        quitScreen.gameObject.SetActive(false);
+        quitScreen.interactable = false;
     }
 }

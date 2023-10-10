@@ -39,6 +39,11 @@ public class Movimiento : MonoBehaviour
 
 
     public static Vector3 move = Vector3.zero;
+    private void Awake()
+    {
+        Time.timeScale = 1;
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
