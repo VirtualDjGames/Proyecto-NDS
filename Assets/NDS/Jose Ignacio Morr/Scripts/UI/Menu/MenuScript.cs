@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,6 +15,8 @@ public class MenuScript : MonoBehaviour
     public CanvasGroup menuScreen;
     public CanvasGroup quitScreen;
     public CanvasGroup darkScreen;
+    public GameObject settingsWindow;
+    public GameObject creditsWindow;
     public Animator introAnim;
 
     // Start is called before the first frame update
@@ -54,6 +57,7 @@ public class MenuScript : MonoBehaviour
             }
         }
 
+        //ToGameplay
         if (isTimeToPlay)
         {
             darkScreen.alpha += Time.deltaTime;
@@ -71,11 +75,17 @@ public class MenuScript : MonoBehaviour
     public void StartPlay()
     {
         isTimeToPlay = true;
+
+        settingsWindow.SetActive(false);
+        creditsWindow.SetActive(false);
     }
 
     public void QuitOption()
     {
         quitScreen.gameObject.SetActive(true);
+        settingsWindow.SetActive(false);
+        creditsWindow.SetActive(false);
+
         quitScreen.interactable = true;
     }
 
@@ -88,5 +98,25 @@ public class MenuScript : MonoBehaviour
     {
         quitScreen.gameObject.SetActive(false);
         quitScreen.interactable = false;
+    }
+
+    public void SettingsOpen()
+    {
+        settingsWindow.SetActive(true);
+        creditsWindow.SetActive(false);
+    }
+    public void SettingsClosed()
+    {
+        settingsWindow.SetActive(false);
+    }
+
+    public void CreditsOpen()
+    {
+        creditsWindow.SetActive(true);
+        settingsWindow.SetActive(false);
+    }
+    public void CreditsClosed()
+    {
+        creditsWindow.SetActive(false);
     }
 }
