@@ -32,8 +32,8 @@ public class Enemigo_1 : MonoBehaviour
         if (Vector3.Distance(transform.position, target.transform.position) <= distancia_ataque && !atacando)
         {
             agente.enabled = false;
-            // rutina = Random.Range(0, 3);
-            rutina = 0;
+             rutina = Random.Range(0, 3);
+            //rutina = 0;
             atacando = true;
             switch (rutina)
             {
