@@ -32,8 +32,9 @@ public class Enemigo_1 : MonoBehaviour
         if (Vector3.Distance(transform.position, target.transform.position) <= distancia_ataque && !atacando)
         {
             agente.enabled = false;
-             rutina = Random.Range(0, 3);
-            //rutina = 0;
+            // rutina = Random.Range(0, 3);
+            rutina = 2;
+            anim.SetBool("walk", false);
             atacando = true;
             switch (rutina)
             {
@@ -51,12 +52,9 @@ public class Enemigo_1 : MonoBehaviour
         else
         {
             
+            anim.SetBool("walk", true);
             var lookPos = target.transform.position - transform.position;
 
-            if (!atacando)
-            {
-                transform.LookAt(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z));
-            }
             lookPos.y = 0;
             var rotation = Quaternion.LookRotation(lookPos);
 
@@ -64,11 +62,15 @@ public class Enemigo_1 : MonoBehaviour
             agente.SetDestination(target.transform.position);
 
         }
+        if (!atacando)
+        {
+            transform.LookAt(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z));
+        }
         if (atacando)
         {
             cronometro += 1 * Time.deltaTime;
             agente.enabled = false;
-            if (cronometro >= 5)
+            if (cronometro >= 4)
             {
                 atacando = false;
                 cronometro = 0;
@@ -82,6 +84,7 @@ public class Enemigo_1 : MonoBehaviour
         Instantiate(bola_de_fuego, spawn[0].transform.position, transform.rotation);
         yield return new WaitForSecondsRealtime(.2f);
         anim.SetInteger("attack", 0);
+
         yield return null;
     }
     IEnumerator ataque2()//charco de fuego
@@ -98,7 +101,11 @@ public class Enemigo_1 : MonoBehaviour
     {
         ataque = 3;
         anim.SetInteger("attack", ataque);
-        Instantiate(invocacion, spawn[2].transform.position, transform.rotation);
+        yield return new WaitForSecondsRealtime(.2f);
+        anim.SetInteger("attack", 0);
+        Instantiate(invocacion, spawn[2].transform.position, transform.rotation);//particulas
+        yield return new WaitForSecondsRealtime(.4f);
+        //enemigo
         yield return null;
     }
 }
