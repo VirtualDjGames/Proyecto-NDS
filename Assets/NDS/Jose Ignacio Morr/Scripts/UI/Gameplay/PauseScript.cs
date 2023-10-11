@@ -60,6 +60,10 @@ public class PauseScript : MonoBehaviour
                 hudPanel.interactable = true;
                 pausePanel.interactable = false;
 
+                settingsWindow.SetActive(false);
+                quitScreen.gameObject.SetActive(false);
+                quitScreen.interactable = false;
+
                 if (hudPanel.alpha == 1f && pausePanel.alpha == 0f)
                 {
                     hudPanel.alpha = 1f;
