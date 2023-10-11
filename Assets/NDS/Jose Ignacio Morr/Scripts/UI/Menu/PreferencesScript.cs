@@ -34,9 +34,9 @@ public class PreferencesScript : MonoBehaviour
         float newVolume = masterSlider.value; // Obtén el valor actual del slider
         masterVolume = newVolume; // Actualiza la variable de volumen maestro
         // Aplica el nuevo volumen a tu sistema de audio o controladores de sonido aquí
-        // Ejemplo: AudioListener.volume = masterVolume;
-
+        // Ejemplo: AudioListener.volume = masterVolume;        
         PlayerPrefs.SetFloat("MasterVolume", volume);
+        AudioManager.Instance.SetMasterVolume(volume);
         PlayerPrefs.Save();
     }
 
@@ -48,6 +48,7 @@ public class PreferencesScript : MonoBehaviour
         // Ejemplo: AudioListener.volume = masterVolume;
 
         PlayerPrefs.SetFloat("MusicVolume", volume);
+        AudioManager.Instance.SetMusicAmbientVolume(volume);
         PlayerPrefs.Save();
     }
 
@@ -59,6 +60,7 @@ public class PreferencesScript : MonoBehaviour
         // Ejemplo: AudioListener.volume = masterVolume;
 
         PlayerPrefs.SetFloat("EffectsVolume", volume);
+        AudioManager.Instance.SetSoundEffectsVolume(volume);
         PlayerPrefs.Save();
     }
 }

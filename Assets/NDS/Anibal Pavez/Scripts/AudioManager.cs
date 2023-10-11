@@ -69,14 +69,11 @@ public class AudioManager : MonoBehaviour
 	{
 		master.SetFloat("volSFX", Mathf.Log10(volume) * 20);
 	}
-	public void SetMusicVolume(float volume)
-	{
-		master.SetFloat("volMusic", Mathf.Log10(volume) * 20);
-	}
-	public void SetAmbientVolume(float volume)
-	{
+	public void SetMusicAmbientVolume(float volume)
+    {
+        master.SetFloat("volMusic", Mathf.Log10(volume) * 20);
 		master.SetFloat("volAmbient", Mathf.Log10(volume) * 20);
-	}
+	}  
 	public void SetMasterVolume(float volume)
     {
 		master.SetFloat("MasterAudio", Mathf.Log10(volume) * 20);

@@ -7,6 +7,7 @@ using UnityEngine.Rendering.Universal;
 public class Movimiento : MonoBehaviour
 {
     CharacterController characterController;
+    private AudioPlay AudioPlay;
     private InputsMap inputs;
     private Rigidbody rb;
 
@@ -48,6 +49,7 @@ public class Movimiento : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         characterController = GetComponent<CharacterController>();
+        AudioPlay = GetComponent<AudioPlay>();
         inputs = new InputsMap();
         inputs.Gameplay.Enable();
         Cursor.lockState = CursorLockMode.Locked;
@@ -233,6 +235,8 @@ public class Movimiento : MonoBehaviour
         {
             HP--;
             isAttack = true;
+            //Sonido de Daño
+            AudioPlay.DamageLive();
         }
     }
 }
