@@ -6,17 +6,19 @@ public class AudioPlay : MonoBehaviour
 {
     private InputsMap inputs;
     GunScript GunScript;
+    Movimiento MovimientoScript;
     private bool musicDeathOn, pauseMenu, timeAlmacenado, jumpset;
     private float timeMusic, volume;
     public static float pitch;
-    CharacterController a;
+    CharacterController CharacterController;
     [SerializeField] public AudioClip[] SFX, ShootGunSFX, ReloadGun, Ambient, IntroMusic, MusicInGame, Steps, HeartLife, Jump, DamageLife;
     void Start()
     {
         //Ambiente inicial
         AudioManager.Instance.PlayAmbient(Ambient[0], 0.4f);
         GunScript = GetComponent<GunScript>();
-        a = GetComponent<CharacterController>();
+        CharacterController = GetComponent<CharacterController>();
+        MovimientoScript = GetComponent<Movimiento>();
         AudioManager.Instance.PlayMusic(MusicInGame[0]);
         inputs = new InputsMap();
         inputs.Gameplay.Enable();
@@ -25,6 +27,7 @@ public class AudioPlay : MonoBehaviour
     private void Update()
     {
         PausedGameMenuMusic();
+        HeartSound();
         if (Movimiento.move.x < 0 || Movimiento.move.z < 0 || Movimiento.move.x > 0 || Movimiento.move.z > 0)
         {           
             //Velocidad de Pasos              
@@ -42,7 +45,7 @@ public class AudioPlay : MonoBehaviour
                 GunScript.AnimatorGun.SetFloat("VelocityGun", 0.5f);
             }
             //Reproducir pasos
-            if (a.isGrounded)
+            if (CharacterController.isGrounded)
             {
                 AudioManager.Instance.Step(Steps[Random.Range(0, Steps.Length)], volume, pitch);
                 GunScript.AnimatorGun.SetBool("Walking", true);
@@ -61,7 +64,7 @@ public class AudioPlay : MonoBehaviour
                 AudioManager.Instance.PlayGlobalSoundEffect(Jump[0], 2);
                 jumpset = true;
             }
-            if (a.isGrounded && Movimiento.isJump)
+            if (CharacterController.isGrounded && Movimiento.isJump)
             {
                 AudioManager.Instance.PlayGlobalSoundEffect(Jump[1]);
                 Debug.Log("Salto"); Movimiento.isJump = false;
@@ -78,6 +81,10 @@ public class AudioPlay : MonoBehaviour
                 AudioManager.Instance.PlayMusic(MusicInGame[4], 0.5f);
                 //Campana de muerte
                 AudioManager.Instance.PlayGlobalSoundEffect(SFX[1]);
+                //Grito de Muerte
+                AudioManager.Instance.PlayGlobalSoundEffect(HeartLife[1]);
+                //Detemos el corazon
+                AudioManager.Instance.audioHeart.Stop();
             }
 
             musicDeathOn = true;
@@ -125,5 +132,26 @@ public class AudioPlay : MonoBehaviour
     public void DamageLive()
     {
         AudioManager.Instance.PlayGlobalSoundEffect(DamageLife[Random.Range(0,DamageLife.Length)]);
+    }
+    public void HeartSound()
+    {
+        if ( MovimientoScript.HP <= 3)
+        {
+            if (!AudioManager.Instance.audioHeart.isPlaying && MovimientoScript.HP !=0)
+            {
+                AudioManager.Instance.Heart(HeartLife[0], 1, pitch);
+            }
+            if (MovimientoScript.HP == 2)
+            {
+                AudioManager.Instance.audioHeart.pitch = 1.4f;
+                AudioManager.Instance.audioHeart.volume = 1.5f;
+            }
+            if (MovimientoScript.HP == 1)
+            {
+                AudioManager.Instance.audioHeart.pitch = 2f;
+                AudioManager.Instance.audioHeart.volume = 2f;
+            } 
+        }
+
     }
 }

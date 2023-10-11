@@ -236,7 +236,10 @@ public class Movimiento : MonoBehaviour
             HP--;
             isAttack = true;
             //Sonido de Daño
-            AudioPlay.DamageLive();
+            if (HP !=0)
+            {
+                AudioPlay.DamageLive();
+            }            
         }
     }
 }

@@ -334,18 +334,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &910729970 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6764305086743001502, guid: 50b35e84221dc334dbd48e9ed419171a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1102359422}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1102359422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -474,11 +462,6 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4277414932836421985, guid: 50b35e84221dc334dbd48e9ed419171a,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4724894475974625949, guid: 50b35e84221dc334dbd48e9ed419171a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -494,16 +477,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.95007324
       objectReference: {fileID: 0}
-    - target: {fileID: 5879474607703211866, guid: 50b35e84221dc334dbd48e9ed419171a,
-        type: 3}
-      propertyPath: ammoUI
-      value: 
-      objectReference: {fileID: 1395852397}
-    - target: {fileID: 5879474607703211866, guid: 50b35e84221dc334dbd48e9ed419171a,
-        type: 3}
-      propertyPath: reloadingImage
-      value: 
-      objectReference: {fileID: 910729970}
     - target: {fileID: 6108995706919115132, guid: 50b35e84221dc334dbd48e9ed419171a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -591,26 +564,6 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: c6ac146f25156e1409388c7047df2193, type: 3}
     - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
         type: 3}
-      propertyPath: HeartLife.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
-        type: 3}
-      propertyPath: DamageLife.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
-        type: 3}
-      propertyPath: HeartLife.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: b2d64ccdbb2442044bb208a2a4d67130, type: 3}
-    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
-        type: 3}
-      propertyPath: HeartLife.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 223402af249a71a41919a6f24ed5bc97, type: 3}
-    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
-        type: 3}
       propertyPath: HeartLife.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 68b3a522cf6787040a65e439f2954742, type: 3}
@@ -649,41 +602,6 @@ PrefabInstance:
       propertyPath: ReloadGun.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 9a08527b8550c5c46bb633dd2c0ed58f, type: 3}
-    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
-        type: 3}
-      propertyPath: DamageLife.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: b2d64ccdbb2442044bb208a2a4d67130, type: 3}
-    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
-        type: 3}
-      propertyPath: DamageLife.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 223402af249a71a41919a6f24ed5bc97, type: 3}
-    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
-        type: 3}
-      propertyPath: DamageLife.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 68b3a522cf6787040a65e439f2954742, type: 3}
-    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
-        type: 3}
-      propertyPath: DamageLife.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 0853459bc601d58499047a0d7d239806, type: 3}
-    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
-        type: 3}
-      propertyPath: DamageLife.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: 10cb984acc181014a90b6e5c446d84e6, type: 3}
-    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
-        type: 3}
-      propertyPath: DamageLife.Array.data[5]
-      value: 
-      objectReference: {fileID: 8300000, guid: 54f86635015e5a845ac9482c8149a817, type: 3}
-    - target: {fileID: 8792839914158153512, guid: 50b35e84221dc334dbd48e9ed419171a,
-        type: 3}
-      propertyPath: DamageLife.Array.data[6]
-      value: 
-      objectReference: {fileID: 8300000, guid: 1774bdbe86d487f458cff37713755a17, type: 3}
     - target: {fileID: 9027146480213402878, guid: 50b35e84221dc334dbd48e9ed419171a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -706,18 +624,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50b35e84221dc334dbd48e9ed419171a, type: 3}
---- !u!114 &1395852397 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3066435776353046848, guid: 50b35e84221dc334dbd48e9ed419171a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1102359422}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1567688510
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,8 +9,9 @@ public class AudioManager : MonoBehaviour
 	public AudioSource audioSourceSFX; //Efectos de sonido
 	public AudioSource audioSourceMusic; //Musica
     public AudioSource audioSourceAmbient; //Ambiente
-	public AudioSource audioSteps; //Gestion de Pasos
-                                           //private AudioSource audioSourceAmbient; //Sonido ambiente EJ:LLuvia
+    public AudioSource audioSteps; //Gestion de Pasos
+    public AudioSource audioHeart; //Gestion de Corazon
+                                   //private AudioSource audioSourceAmbient; //Sonido ambiente EJ:LLuvia
     public AudioMixer master;
 	private void Awake()
 	{
@@ -50,16 +51,23 @@ public class AudioManager : MonoBehaviour
         audioSourceAmbient.volume = volume;
         audioSourceAmbient.Play();
     }
-	public void Step(AudioClip clip, float volume = 1, float pitch = 1)
+    public void Step(AudioClip clip, float volume = 1, float pitch = 1)
     {
         if (!audioSteps.isPlaying)
-        {       
+        {
             audioSteps.clip = clip;
-			audioSteps.volume = volume;
+            audioSteps.volume = volume;
             audioSteps.pitch = pitch;
             audioSteps.Play();
-		}
-	}
+        }
+    }
+    public void Heart(AudioClip clip, float volume = 1, float pitch = 1)
+    {
+        audioHeart.clip = clip;
+        audioHeart.volume = volume;
+        audioHeart.pitch = pitch;
+        audioHeart.Play();
+    }
     public void VolumeAmbient(float volume)
     {
         audioSourceAmbient.volume = volume;
