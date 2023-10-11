@@ -2497,7 +2497,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &931851327929634019
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2692,10 +2692,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 8791341849451050928}
   m_HandleRect: {fileID: 795386966153230866}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3138,10 +3138,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 2170099638848907628}
   m_HandleRect: {fileID: 8829378517999328294}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5031,7 +5031,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7130085784372478676
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5874,6 +5874,7 @@ MonoBehaviour:
   Jump:
   - {fileID: 8300000, guid: e708389b7a8f64a46aa12d201c187b69, type: 3}
   - {fileID: 8300000, guid: 45bc125cb8cb195408490bec63fde615, type: 3}
+  DamageLife: []
 --- !u!82 &6227645897309683774
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6843,10 +6844,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 5558054983905677253}
   m_HandleRect: {fileID: 2566137080198762158}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

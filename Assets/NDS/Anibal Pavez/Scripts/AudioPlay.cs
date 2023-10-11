@@ -10,7 +10,7 @@ public class AudioPlay : MonoBehaviour
     private float timeMusic, volume;
     public static float pitch;
     CharacterController a;
-    [SerializeField] public AudioClip[] SFX, ShootGunSFX, ReloadGun, Ambient, IntroMusic, MusicInGame, Steps, HeartLife, Jump;
+    [SerializeField] public AudioClip[] SFX, ShootGunSFX, ReloadGun, Ambient, IntroMusic, MusicInGame, Steps, HeartLife, Jump, DamageLife;
     void Start()
     {
         //Ambiente inicial
@@ -122,5 +122,8 @@ public class AudioPlay : MonoBehaviour
     {
         AudioManager.Instance.PlayGlobalSoundEffect(ShootGunSFX[Random.Range(0, ShootGunSFX.Length)]);
     }
-    
+    public void DamageLive()
+    {
+        AudioManager.Instance.PlayGlobalSoundEffect(DamageLife[Random.Range(0,DamageLife.Length)]);
+    }
 }
