@@ -23,6 +23,8 @@ public class GunScript : MonoBehaviour
     public TextMeshProUGUI ammoUI;
     public Image reloadingImage;
 
+    public GameObject particle_shoot_light, shoot_light;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -110,8 +112,18 @@ public class GunScript : MonoBehaviour
                 Destroy(hit.collider.gameObject); // Prueba
             }
         }
-
+        StartCoroutine("shoot_lights");
         currentAmmo--; // Reduce la munición activa después de disparar
+    }
+    
+    IEnumerator shoot_lights()
+    {
+        shoot_light.SetActive(true);
+        particle_shoot_light.SetActive(true);
+        yield return new WaitForSecondsRealtime(.2f);
+        shoot_light.SetActive(false);
+        particle_shoot_light.SetActive(false);
+        yield return null;
     }
 
     void AmmoUI()
