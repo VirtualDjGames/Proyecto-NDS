@@ -10,6 +10,8 @@ public class KeyDoorManager: MonoBehaviour
     private bool isInteractuableDoor = false;
     private List<string> keys = new List<string>(); //Llaves
 
+    
+
     //Agrega una llave al inventario
     public void AddKey(string keyName)
     {
@@ -72,6 +74,7 @@ public class KeyDoorManager: MonoBehaviour
                     {
                         // Aquí puedes realizar acciones específicas al usar la llave, como abrir una puerta, etc.
                         Debug.Log("Usaste la llave Ejemplo");
+                        other.gameObject.GetComponent<Animator>().SetBool("isOpen", true);
                         RemoveKey("Ejemplo"); // Elimina la llave después de usarla
                         //Se mueve la puerta
                     }

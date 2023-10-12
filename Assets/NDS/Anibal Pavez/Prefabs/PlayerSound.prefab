@@ -7783,6 +7783,7 @@ GameObject:
   - component: {fileID: 9116547913461103295}
   - component: {fileID: 6145048106316059388}
   - component: {fileID: 371835396182996399}
+  - component: {fileID: 3583338856120976301}
   m_Layer: 0
   m_Name: PlayerSound
   m_TagString: Player
@@ -7806,7 +7807,7 @@ Transform:
   - {fileID: 4119020950918648854}
   - {fileID: 5268099618488334752}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &9200971986329924781
 CharacterController:
@@ -8489,6 +8490,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3583338856120976301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7014461899387243485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c80b12b8aa77a2641852a3f3280715de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7031708848788212412
 GameObject:
   m_ObjectHideFlags: 0
