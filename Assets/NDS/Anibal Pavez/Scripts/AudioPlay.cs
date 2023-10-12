@@ -7,8 +7,8 @@ public class AudioPlay : MonoBehaviour
     private InputsMap inputs;
     GunScript GunScript;
     Movimiento MovimientoScript;
-    private bool musicDeathOn, pauseMenu, timeAlmacenado, jumpset;
-    private float timeMusic, volume;
+    private bool musicDeathOn, pauseMenu, timeAlmacenado, jumpset, startHeart;
+    private float timeMusic, volume, timeToGame, pitchHeart;
     public static float pitch;
     CharacterController CharacterController;
     [SerializeField] public AudioClip[] SFX, ShootGunSFX, ReloadGun, Ambient, IntroMusic, MusicInGame, Steps, HeartLife, Jump, DamageLife;
@@ -98,13 +98,16 @@ public class AudioPlay : MonoBehaviour
             if (timeAlmacenado == false)
             {
                 AudioManager.Instance.audioSourceAmbient.Pause();
+                AudioManager.Instance.audioSourceSFX.Pause();
+                AudioManager.Instance.audioHeart.Pause();
                 timeMusic = AudioManager.Instance.audioSourceMusic.time;
+                Debug.Log(timeMusic);
                 timeAlmacenado = true;
             }
             if (!pauseMenu)
             {
                 //Musica Pausa Inicia
-                AudioManager.Instance.PlayMusic(MusicInGame[1], 1, 0, false);                
+                AudioManager.Instance.PlayMusic(MusicInGame[1], 1, 0, false);
                 Debug.Log("Reproduce Pausa");
                 pauseMenu = true;
             }
@@ -114,11 +117,13 @@ public class AudioPlay : MonoBehaviour
                 AudioManager.Instance.PlayMusic(MusicInGame[2], 0.6f);
             }
         }
-        if (PauseScript.isPaused == false && timeAlmacenado)
+        else if (timeAlmacenado)
         {
             //Reanudamos musica MusicaInGame y música ambiente continua sin cambios
             AudioManager.Instance.PlayMusic(MusicInGame[0], 1, timeMusic);
             AudioManager.Instance.audioSourceAmbient.UnPause();
+            AudioManager.Instance.audioSourceSFX.UnPause();
+            AudioManager.Instance.audioHeart.UnPause();
             timeAlmacenado = false;
             pauseMenu = false;
             timeMusic = 0;
@@ -135,20 +140,44 @@ public class AudioPlay : MonoBehaviour
     }
     public void HeartSound()
     {
+        if (MovimientoScript.HP == 4 && AudioManager.Instance.audioHeart.isPlaying)
+        {
+            //Calmar heart
+            timeToGame += Time.deltaTime;
+            float newPitch = Mathf.Lerp(pitchHeart, 0.7f, timeToGame / 3);
+            AudioManager.Instance.audioHeart.pitch = newPitch;
+            //Atenuacion de Heart
+            if (AudioManager.Instance.audioHeart.pitch == 0.7f)
+            {
+                float newVolume = Mathf.Lerp(pitchHeart, 0.0001f, timeToGame / 3);
+                AudioManager.Instance.audioHeart.volume = newVolume;
+            }
+        }
+        //Detener Sound
+        if (AudioManager.Instance.audioHeart.volume <= 0.0001f && startHeart)
+        {
+            AudioManager.Instance.audioHeart.Stop();
+            timeToGame = 0;
+            startHeart = false;
+        }
         if (MovimientoScript.HP <= 3)
         {
-            if (!AudioManager.Instance.audioHeart.isPlaying && MovimientoScript.HP != 0)
+            if (!startHeart && MovimientoScript.HP != 0)
             {
-                AudioManager.Instance.Heart(HeartLife[0], 1, pitch);
+                pitchHeart = 1;
+                AudioManager.Instance.Heart(HeartLife[0], 1, pitchHeart);
+                startHeart = true;
             }
             if (MovimientoScript.HP == 2)
             {
-                AudioManager.Instance.audioHeart.pitch = 1.4f;
+                pitchHeart = 1.6f;
+                AudioManager.Instance.audioHeart.pitch = pitchHeart;
                 AudioManager.Instance.audioHeart.volume = 1.5f;
             }
             if (MovimientoScript.HP == 1)
             {
-                AudioManager.Instance.audioHeart.pitch = 2f;
+                pitchHeart = 2f;
+                AudioManager.Instance.audioHeart.pitch = pitchHeart;
                 AudioManager.Instance.audioHeart.volume = 2f;
             }
         }

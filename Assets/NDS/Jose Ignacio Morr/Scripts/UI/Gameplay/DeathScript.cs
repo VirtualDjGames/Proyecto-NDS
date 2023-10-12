@@ -124,7 +124,12 @@ public class DeathScript : MonoBehaviour
     }
 
     private void OnDisable()
-    {
+    {          
+        try
+        {
             depthOfField.focalLength.value = 0;
+        }
+        catch 
+        {        }
     }
 }
