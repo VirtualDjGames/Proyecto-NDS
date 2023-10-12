@@ -23,6 +23,8 @@ public class PauseScript : MonoBehaviour
         inputs = new InputsMap();
         inputs.Gameplay.Enable();
         inputs.UI.Disable();
+
+        isPaused = false;
     }
 
 
