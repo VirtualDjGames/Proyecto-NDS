@@ -26,7 +26,7 @@ public class Enemigo_1 : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
-        target = GameObject.Find("Player");
+        target = GameObject.FindWithTag("Player");
     }
 
     void Update()
