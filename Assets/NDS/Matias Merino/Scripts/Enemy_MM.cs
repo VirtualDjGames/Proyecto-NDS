@@ -67,14 +67,7 @@ public class Enemy_MM : MonoBehaviour
     {
         if (!isAttacking)
         {
-            // Realiza la lógica de ataque aquí, como dañar al jugador.
-            // Asegúrate de configurar el booleano isAttacking cuando comienzas y terminas el ataque.
-            // Lógica de ataque.
-            // ...
-
-            // Reinicia isAttacking después de que termine el ataque.
-            // Esto depende de cómo gestiones tu lógica de ataque.
-            // isAttacking = false;
+            transform.LookAt(new Vector3(playerTarget.transform.position.x,transform.position.y,playerTarget.transform.position.z));
         }
     }
 }
