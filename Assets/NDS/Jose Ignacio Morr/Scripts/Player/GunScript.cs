@@ -139,7 +139,7 @@ public class GunScript : MonoBehaviour
     {
         shoot_light.SetActive(true);
         particle_shoot_light.SetActive(true);
-        yield return new WaitForSecondsRealtime(.2f);
+        yield return new WaitForSeconds(.1f);
         shoot_light.SetActive(false);
         particle_shoot_light.SetActive(false);
         yield return null;
