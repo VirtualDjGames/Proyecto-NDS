@@ -21,6 +21,8 @@ public class Enemigo_1 : MonoBehaviour
     public GameObject bola_de_fuego,charco_de_fuego,invocacion;
     public Transform[] spawn;
 
+    public GameObject enemy;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -105,7 +107,7 @@ public class Enemigo_1 : MonoBehaviour
         anim.SetInteger("attack", 0);
         Instantiate(invocacion, spawn[2].transform.position, transform.rotation);//particulas
         yield return new WaitForSecondsRealtime(.4f);
-        //enemigo
+        Instantiate(enemy, spawn[2].transform.position, transform.rotation);//enemigo
         yield return null;
     }
 }
