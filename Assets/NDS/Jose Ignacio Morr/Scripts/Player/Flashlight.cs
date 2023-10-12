@@ -8,6 +8,7 @@ public class Flashlight : MonoBehaviour
     //public AudioSource AudioFlash;
     public bool LightActive;
     public GameObject[] Lights;
+    public GameObject flashlightAdviser;
     
     void Start()
     {
@@ -21,6 +22,8 @@ public class Flashlight : MonoBehaviour
     {
         if (inputs.Gameplay.Flashlight.WasPressedThisFrame())
         {
+            flashlightAdviser.SetActive(false);
+
             LightActive = !LightActive;
             if (LightActive)
             {
