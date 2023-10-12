@@ -17,6 +17,7 @@ public class MenuScript : MonoBehaviour
     public GameObject settingsWindow;
     public GameObject creditsWindow;
     public Animator introAnim;
+    public AudioClip[] Menu;
 
     // Start is called before the first frame update
     void Awake()
@@ -62,9 +63,12 @@ public class MenuScript : MonoBehaviour
             darkScreen.alpha += Time.deltaTime;
             menuScreen.alpha -= Time.deltaTime * 1.3f;
             menuScreen.interactable = false;
-            timeToGame += Time.deltaTime;
+            timeToGame += Time.deltaTime;            
+            float newVolume = Mathf.Lerp(1, 0.0001f, timeToGame / 3.2f);
+            AudioManager.Instance.audioSourceMusic.volume = newVolume;
+            
 
-            if (timeToGame >= 3)
+            if (timeToGame >= 3.2f)
             {
                 SceneManager.LoadScene("Nivel 1");
             }
@@ -74,7 +78,7 @@ public class MenuScript : MonoBehaviour
     public void StartPlay()
     {
         isTimeToPlay = true;
-
+        AudioManager.Instance.PlayGlobalSoundEffect(Menu[0], 2);
         settingsWindow.SetActive(false);
         creditsWindow.SetActive(false);
     }

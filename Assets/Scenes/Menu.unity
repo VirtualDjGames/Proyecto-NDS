@@ -13162,6 +13162,8 @@ MonoBehaviour:
   settingsWindow: {fileID: 1877671037}
   creditsWindow: {fileID: 1276540014}
   introAnim: {fileID: 2124365341}
+  Menu:
+  - {fileID: 8300000, guid: 360324a24182b5746a8609a61c9a664f, type: 3}
 --- !u!1001 &2136827738
 PrefabInstance:
   m_ObjectHideFlags: 0

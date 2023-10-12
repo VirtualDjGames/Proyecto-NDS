@@ -135,9 +135,9 @@ public class AudioPlay : MonoBehaviour
     }
     public void HeartSound()
     {
-        if ( MovimientoScript.HP <= 3)
+        if (MovimientoScript.HP <= 3)
         {
-            if (!AudioManager.Instance.audioHeart.isPlaying && MovimientoScript.HP !=0)
+            if (!AudioManager.Instance.audioHeart.isPlaying && MovimientoScript.HP != 0)
             {
                 AudioManager.Instance.Heart(HeartLife[0], 1, pitch);
             }
@@ -150,7 +150,7 @@ public class AudioPlay : MonoBehaviour
             {
                 AudioManager.Instance.audioHeart.pitch = 2f;
                 AudioManager.Instance.audioHeart.volume = 2f;
-            } 
+            }
         }
 
     }
