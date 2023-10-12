@@ -27,6 +27,10 @@ public class PreferencesScript : MonoBehaviour
         masterSlider.onValueChanged.AddListener(SetMasterVolume);
         musicSlider.onValueChanged.AddListener(SetMusicVolume);
         effectsSlider.onValueChanged.AddListener(SetEffectsVolume);
+
+        masterSlider.value = masterVolume;
+        musicSlider.value = musicVolume;
+        effectsSlider.value = effectsVolume;
     }
 
     public void SetMasterVolume(float volume)
@@ -56,8 +60,6 @@ public class PreferencesScript : MonoBehaviour
     {
         float newVolume = effectsSlider.value; // Obtén el valor actual del slider
         effectsVolume = newVolume; // Actualiza la variable de volumen maestro
-        // Aplica el nuevo volumen a tu sistema de audio o controladores de sonido aquí
-        // Ejemplo: AudioListener.volume = masterVolume;
 
         PlayerPrefs.SetFloat("EffectsVolume", volume);
         AudioManager.Instance.SetSoundEffectsVolume(volume);

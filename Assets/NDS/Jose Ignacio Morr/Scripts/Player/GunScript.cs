@@ -22,6 +22,8 @@ public class GunScript : MonoBehaviour
 
     public TextMeshProUGUI ammoUI;
     public Image reloadingImage;
+    public GameObject reloadingAdviser;
+    public GameObject noAmmoAdviser;
 
     public GameObject particle_shoot_light, shoot_light;
 
@@ -58,7 +60,7 @@ public class GunScript : MonoBehaviour
             // Detecta la recarga
             if (inputs.Gameplay.Reload.WasPressedThisFrame())
             {
-                Reload();              
+                Reload();
             }
 
             if (isShooting)
@@ -78,6 +80,23 @@ public class GunScript : MonoBehaviour
                 reloadingImage.fillAmount += Time.deltaTime;
                 reloadTime += Time.deltaTime;
                 
+            }
+
+            if(currentAmmo <= 0 && currentReserveAmmo >= 1)
+            {
+                if(!isReloading)
+                {
+                    reloadingAdviser.SetActive(true);
+                }
+            }
+
+            if(currentReserveAmmo <= 0 && currentAmmo <= 0)
+            {
+                noAmmoAdviser.SetActive(true);
+            }
+            else
+            {
+                noAmmoAdviser.SetActive(false);
             }
 
             if (reloadTime > 1.5f)
@@ -135,10 +154,11 @@ public class GunScript : MonoBehaviour
     {
         if (currentReserveAmmo > 0 && currentAmmo < maxAmmo)
         {
+            reloadingAdviser.SetActive(false);
             isReloading = true;
             if (reloadTime<0.1f)
             {
-                Debug.Log("Recargando");
+
                 AnimatorGun.SetTrigger("Reload");
             }
             
