@@ -1747,7 +1747,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rutina: 0
   cronometro: 0
-  cronometro2: 0
   anim: {fileID: 2404684921707521048}
   target: {fileID: 0}
   atacando: 0
@@ -1765,6 +1764,7 @@ MonoBehaviour:
   - {fileID: 7919790672630502392}
   - {fileID: 8386036179436260070}
   - {fileID: 4110324381488521724}
+  enemy: {fileID: 842207362659524101, guid: b21b6684d81afb04fb92f6e7e097a421, type: 3}
 --- !u!195 &8591864398421982173
 NavMeshAgent:
   m_ObjectHideFlags: 0
