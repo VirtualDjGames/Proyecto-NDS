@@ -11,6 +11,7 @@ public class Enemy_MM : MonoBehaviour
     public float chaseDistance = 10f;
     public float attackDistance = 2f;
     private bool isAttacking = false;
+    private bool isDamaged = false;
     public int vida = 3;
     private Collider col;
     GameObject mano;
@@ -38,7 +39,7 @@ public class Enemy_MM : MonoBehaviour
         {
             float distanceToPlayer = Vector3.Distance(transform.position, playerTarget.position);
 
-            if (distanceToPlayer <= chaseDistance && isAttacking == false)
+            if (distanceToPlayer <= chaseDistance && isAttacking == false && isDamaged == false)
             {
                 // Si la distancia al jugador es menor que la distancia de persecución, establece la dirección de destino.
                 enemy_MM.SetDestination(playerTarget.position);
@@ -58,6 +59,7 @@ public class Enemy_MM : MonoBehaviour
                 // Configura la animación de ataque y realiza la lógica de ataque.
                 enemy_MM.ResetPath();
                 enemyAnimator.SetBool("IsAttacking", true);
+                isAttacking = true;
                 Attack();
             }
         }
@@ -73,21 +75,25 @@ public class Enemy_MM : MonoBehaviour
 
     public void EndAttackAnimation()
     {
-        enemyAnimator.SetBool("IsAttacking", true);
+        enemyAnimator.SetBool("IsAttacking", false);
+        isAttacking = false;
+    }
+    public void EndDamagedAnimation()
+    {
+        enemyAnimator.SetBool("IsDamaged", false);
+        isDamaged = false;
     }
 
     public void TakeDamage()
     {
         vida--;
-        //enemyAnimator.SetBool("IsDamaged",true);
+        enemyAnimator.SetBool("IsDamaged",true);
+        isDamaged = true;
     }
 
     // Lógica para el ataque (puedes personalizar esto).
     void Attack()
     {
-        if (!isAttacking)
-        {
-            transform.LookAt(new Vector3(playerTarget.transform.position.x,transform.position.y,playerTarget.transform.position.z));
-        }
+        transform.LookAt(new Vector3(playerTarget.transform.position.x, transform.position.y, playerTarget.transform.position.z));
     }
 }
