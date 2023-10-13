@@ -13894,6 +13894,7 @@ MonoBehaviour:
   SFX:
   - {fileID: 8300000, guid: c6ac146f25156e1409388c7047df2193, type: 3}
   - {fileID: 8300000, guid: 22dbc3e3e4a9a4846bdf0e0df3911eb5, type: 3}
+  - {fileID: 8300000, guid: c1a30dca7cfcb2d48926c58d67de41f5, type: 3}
   ShootGunSFX:
   - {fileID: 8300000, guid: d5fa7456f435af1449c3af5b27d2348d, type: 3}
   - {fileID: 8300000, guid: 06775e891809aac45bca5ab47fd3e7a1, type: 3}

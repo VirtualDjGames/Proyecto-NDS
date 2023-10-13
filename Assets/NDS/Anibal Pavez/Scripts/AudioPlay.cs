@@ -183,4 +183,8 @@ public class AudioPlay : MonoBehaviour
         }
 
     }
+    public void Keys()
+    {
+        AudioManager.Instance.PlayGlobalSoundEffect(SFX[2]);
+    }
 }
