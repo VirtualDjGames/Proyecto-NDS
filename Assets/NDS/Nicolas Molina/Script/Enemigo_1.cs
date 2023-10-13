@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class Enemigo_1 : MonoBehaviour
 {
+    public static bool activacion;
     public int rutina;
     public float cronometro;
     public Animator anim;
@@ -31,6 +32,9 @@ public class Enemigo_1 : MonoBehaviour
 
     void Update()
     {
+        if (activacion)
+        {
+
         if (Vector3.Distance(transform.position, target.transform.position) <= distancia_ataque && !atacando)
         {
             agente.enabled = false;
@@ -77,6 +81,7 @@ public class Enemigo_1 : MonoBehaviour
                 atacando = false;
                 cronometro = 0;
             }
+        }
         }
     }
     IEnumerator ataque1()//bola de fuego
