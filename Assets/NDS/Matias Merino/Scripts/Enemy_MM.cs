@@ -8,7 +8,9 @@ public class Enemy_MM : MonoBehaviour
     private NavMeshAgent enemy_MM;
     private Transform playerTarget;
     private Animator enemyAnimator;
-    public float chaseDistance = 10f;
+    public AudioClip ZombieSound;
+    AudioSource AudioSource;
+    public float chaseDistance = 10f, timeToGame;
     public float attackDistance = 2f;
     private bool isAttacking = false;
     private bool isDamaged = false;
@@ -20,6 +22,7 @@ public class Enemy_MM : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioSource = GetComponent<AudioSource>();
         enemy_MM = GetComponent<NavMeshAgent>();
         playerTarget = GameObject.FindWithTag("Player").transform;
         enemyAnimator = GetComponent<Animator>();
@@ -66,6 +69,7 @@ public class Enemy_MM : MonoBehaviour
 
         if (vida <= 0)
         {
+            AudioSource.mute = true;
             enemyAnimator.SetBool("IsDead", true);
             col.enabled = false;
             mano.SetActive(false);

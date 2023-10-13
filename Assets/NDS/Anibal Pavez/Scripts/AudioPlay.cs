@@ -99,6 +99,8 @@ public class AudioPlay : MonoBehaviour
                 AudioManager.Instance.audioSourceAmbient.Pause();
                 AudioManager.Instance.audioSourceSFX.Pause();
                 AudioManager.Instance.audioHeart.Pause();
+                AudioManager.Instance.audioSourceAmbientShot.Pause();
+                AudioManager.Instance.audioSteps.Pause();
                 timeMusic = AudioManager.Instance.audioSourceMusic.time;
                 Debug.Log(timeMusic);
                 timeAlmacenado = true;
@@ -123,10 +125,11 @@ public class AudioPlay : MonoBehaviour
             AudioManager.Instance.audioSourceAmbient.UnPause();
             AudioManager.Instance.audioSourceSFX.UnPause();
             AudioManager.Instance.audioHeart.UnPause();
+            AudioManager.Instance.audioSourceAmbientShot.UnPause();
+            AudioManager.Instance.audioSteps.UnPause();
             timeAlmacenado = false;
             pauseMenu = false;
-            timeMusic = 0;
-            Debug.Log("Reproduce INGAME");
+            timeMusic = 0;            
         }
     }
     public void ShootingGun()
@@ -185,5 +188,13 @@ public class AudioPlay : MonoBehaviour
     public void Keys()
     {
         AudioManager.Instance.PlayGlobalSoundEffect(SFX[2]);
+    }
+    public void AmbientSound(int Sound, float volume)
+    {
+        AudioManager.Instance.PlayAmbientShot(Ambient[Sound],volume);
+    }
+    public void AmbientSoundSuspenso(int Sound, float volume)
+    {
+        AudioManager.Instance.PlayAmbient(Ambient[Sound], volume);
     }
 }

@@ -147,6 +147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3618b19115fb35f48a7f4a8268f73cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Time: 50
+  Door: []
+  Crucifijo: []
 --- !u!1 &106518
 GameObject:
   m_ObjectHideFlags: 0

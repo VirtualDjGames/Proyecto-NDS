@@ -251,22 +251,61 @@ public class Movimiento : MonoBehaviour
             HP--;
             isAttack = true;
             //Sonido de Daño
-            if (HP !=0)
+            if (HP != 0)
             {
                 AudioPlay.DamageLive();
-            }            
-        } 
+            }
+        }
         if (other.gameObject.tag == "Bola_de_Fuego")
         {
             HP--;
             //Sonido de Daño
-            if (HP !=0)
+            if (HP != 0)
             {
                 AudioPlay.DamageLive();
             }
             Destroy(other.gameObject);
-        } 
-       
+        }
+        if (other.CompareTag("Crucifijo"))
+        {
+            other.GetComponent<AutoMuteSFX3D>().Crujido();
+            other.GetComponent<Animator>().SetBool("isRotated", true);
+        }
+        if (other.CompareTag("ViolinAMB"))
+        {            
+            AudioPlay.AmbientSound(2,2.6f);
+        }
+        if (other.CompareTag("Escalofrio"))
+        {
+            AudioPlay.AmbientSound(5, 1);
+            AudioPlay.AmbientSound(1, 1);
+        }
+
+        if (other.CompareTag("MonsterSearch"))
+        {
+            other.gameObject.SetActive(false);
+            AudioPlay.AmbientSound(4, 1.4f);
+        }
+        if (other.CompareTag("Suspenso"))
+        {
+            AudioPlay.AmbientSoundSuspenso(6, 2.5f);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Crucifijo"))
+        {
+            other.GetComponent<Animator>().SetBool("isRotated", false);
+        }
+        if (other.CompareTag("MonsterSearch") || other.CompareTag("ViolinAMB") ||
+            (other.CompareTag("Escalofrio") || (other.CompareTag("Suspenso"))))
+        {
+            AudioManager.Instance.audioSourceAmbient.volume = 0.4f;
+        }
+        if (other.CompareTag("Suspenso"))
+        {
+            AudioPlay.AmbientSoundSuspenso(0, 0.4f);
+        }
     }
     private void OnTriggerStay(Collider other)
     {
@@ -282,6 +321,14 @@ public class Movimiento : MonoBehaviour
                 }
                 cronometro = 0;
             }
+        }
+        if (other.CompareTag("Violin") && !AudioManager.Instance.audioSourceAmbientShot.isPlaying)
+        {
+            AudioPlay.AmbientSound(2, 2.6f);
+        }
+        if (other.CompareTag("Suspenso"))
+        {
+            AudioPlay.AmbientSoundSuspenso(0, 2.5f);
         }
     }
 }

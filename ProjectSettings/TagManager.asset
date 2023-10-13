@@ -10,6 +10,12 @@ TagManager:
   - DoorNoKey
   - Bola_de_Fuego
   - charco_de_Fuego
+  - Crucifijo
+  - ViolinAMB
+  - Escalofrio
+  - Suspenso
+  - MonsterSearch
+  - Violin
   layers:
   - Default
   - TransparentFX

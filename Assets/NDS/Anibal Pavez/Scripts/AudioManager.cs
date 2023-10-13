@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
 	public AudioSource audioSourceSFX; //Efectos de sonido
 	public AudioSource audioSourceMusic; //Musica
     public AudioSource audioSourceAmbient; //Ambiente
+    public AudioSource audioSourceAmbientShot; //AmbienteShot
     public AudioSource audioSteps; //Gestion de Pasos
     public AudioSource audioHeart; //Gestion de Corazon
                                    //private AudioSource audioSourceAmbient; //Sonido ambiente EJ:LLuvia
@@ -50,6 +51,10 @@ public class AudioManager : MonoBehaviour
         audioSourceAmbient.clip = clip;
         audioSourceAmbient.volume = volume;
         audioSourceAmbient.Play();
+    }
+    public void PlayAmbientShot(AudioClip clip, float volume = 1, bool loop = true)
+    {      
+        audioSourceAmbientShot.PlayOneShot(clip, volume);
     }
     public void Step(AudioClip clip, float volume = 1, float pitch = 1)
     {
