@@ -40372,8 +40372,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.257936, y: 3.983655, z: 3.4485333}
-  m_Center: {x: 0.128968, y: 1.4918275, z: -1.2242668}
+  m_Size: {x: 1.7855759, y: 3.983655, z: 3.4485333}
+  m_Center: {x: 0.39278793, y: 1.4918275, z: -1.2242668}
 --- !u!64 &1552536810
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -45936,6 +45936,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.638916
+      objectReference: {fileID: 0}
+    - target: {fileID: 3566391745089738256, guid: 50b35e84221dc334dbd48e9ed419171a,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2.4519362
+      objectReference: {fileID: 0}
+    - target: {fileID: 3566391745089738256, guid: 50b35e84221dc334dbd48e9ed419171a,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 2.9414039
+      objectReference: {fileID: 0}
+    - target: {fileID: 3566391745089738256, guid: 50b35e84221dc334dbd48e9ed419171a,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.08905673
+      objectReference: {fileID: 0}
+    - target: {fileID: 3566391745089738256, guid: 50b35e84221dc334dbd48e9ed419171a,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.0873692
       objectReference: {fileID: 0}
     - target: {fileID: 3724492394224739495, guid: 50b35e84221dc334dbd48e9ed419171a,
         type: 3}
@@ -53277,8 +53297,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.257936, y: 3.983655, z: 3.4485333}
-  m_Center: {x: 0.128968, y: 1.4918275, z: -1.2242668}
+  m_Size: {x: 2.0081253, y: 3.983655, z: 3.4485333}
+  m_Center: {x: 0.50406265, y: 1.4918275, z: -1.2242668}
 --- !u!64 &2033832217
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -56678,5 +56698,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.257936, y: 3.983655, z: 3.4485333}
-  m_Center: {x: 0.128968, y: 1.4918275, z: -1.2242668}
+  m_Size: {x: 2.078364, y: 3.983655, z: 3.4485333}
+  m_Center: {x: 0.53918195, y: 1.4918275, z: -1.2242668}

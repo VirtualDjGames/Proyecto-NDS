@@ -459,7 +459,7 @@ Transform:
   - {fileID: 4989729983640764613}
   - {fileID: 607773262534774289}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -61.16, z: 0}
 --- !u!64 &3051916848961503326
 MeshCollider:
@@ -502,5 +502,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.61
+  m_Radius: 0.85
   m_Center: {x: -3.0585068e-10, y: 0, z: -0.03388703}

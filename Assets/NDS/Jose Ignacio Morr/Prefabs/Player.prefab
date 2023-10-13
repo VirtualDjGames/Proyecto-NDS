@@ -3495,6 +3495,8 @@ MonoBehaviour:
   currentReserveAmmo: 10
   ammoUI: {fileID: 8876630801567381366}
   reloadingImage: {fileID: 5023456029998304739}
+  reloadingAdviser: {fileID: 0}
+  noAmmoAdviser: {fileID: 0}
   particle_shoot_light: {fileID: 5232536581606054598}
   shoot_light: {fileID: 4677022288693184512}
 --- !u!114 &5395743175091705729
@@ -3513,6 +3515,7 @@ MonoBehaviour:
   Lights:
   - {fileID: 4981857570934037981}
   - {fileID: 4719825643749527428}
+  flashlightAdviser: {fileID: 0}
 --- !u!114 &3645241829996230954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3525,6 +3528,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c80b12b8aa77a2641852a3f3280715de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyAddedAdviser: {fileID: 0}
+  keyRemovedAdviser: {fileID: 0}
+  grabKeyAdviser: {fileID: 0}
+  openDoorAdviser: {fileID: 0}
+  hasNoKeyAdviser: {fileID: 0}
 --- !u!54 &4758696903638108282
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3571,8 +3579,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.4516182, y: 2.0257626, z: 1.472165}
-  m_Center: {x: -0.033453904, y: -0.102441385, z: -0.022337966}
+  m_Size: {x: 1.5978122, y: 1.9781191, z: 1.472165}
+  m_Center: {x: 0.039643116, y: -0.07861939, z: -0.022337966}
 --- !u!1 &4981857570404060138
 GameObject:
   m_ObjectHideFlags: 0
