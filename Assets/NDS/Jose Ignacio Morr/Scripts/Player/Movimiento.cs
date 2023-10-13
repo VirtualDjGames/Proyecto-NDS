@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class Movimiento : MonoBehaviour
 {
@@ -30,7 +31,6 @@ public class Movimiento : MonoBehaviour
     private float mouseHorizontal = 3.0f;
     private float mouseVertical = 2.0f;
 
-
     private float minRotation = -65.0f;
     private float maxRotation = 60.0f;
     float h_mouse, v_mouse;
@@ -39,6 +39,8 @@ public class Movimiento : MonoBehaviour
     private Vignette vignetteHP;
 
     public float cronometro;
+
+    public CanvasGroup darkScreen;
 
     public static Vector3 move = Vector3.zero;
     private void Awake()
@@ -63,7 +65,7 @@ public class Movimiento : MonoBehaviour
     void Update()
     {
         cronometro += Time.deltaTime;
-        Debug.Log(cronometro);
+
         if(Time.timeScale == 1) //Si el juego no esta pausado
         {
             h_mouse = mouseHorizontal * Input.GetAxis("Mouse X");
@@ -126,9 +128,19 @@ public class Movimiento : MonoBehaviour
 
             characterController.Move(move * Time.deltaTime);
 
-            if(HP <= 0)
+            if (HP <= 0)
             {
-                DeathScript.isDead = true;
+                if(!Enemigo_1.activacion)
+                {
+                    DeathScript.isDead = true;
+                }
+
+                darkScreen.alpha += Time.unscaledDeltaTime * 0.7f;
+
+                if (darkScreen.alpha >= 1)
+                {
+                    SceneManager.LoadScene("Ending");
+                }
             }
 
 

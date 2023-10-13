@@ -23,6 +23,7 @@ public class MenuScript : MonoBehaviour
     void Awake()
     {
         Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // Update is called once per frame

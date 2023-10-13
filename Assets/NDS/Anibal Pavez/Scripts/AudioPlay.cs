@@ -49,7 +49,6 @@ public class AudioPlay : MonoBehaviour
             {
                 AudioManager.Instance.Step(Steps[Random.Range(0, Steps.Length)], volume, pitch);
                 GunScript.AnimatorGun.SetBool("Walking", true);
-                Debug.Log("Da un paso");
             }
         }
         else
@@ -67,7 +66,7 @@ public class AudioPlay : MonoBehaviour
             if (CharacterController.isGrounded && Movimiento.isJump)
             {
                 AudioManager.Instance.PlayGlobalSoundEffect(Jump[1]);
-                Debug.Log("Salto"); Movimiento.isJump = false;
+                Movimiento.isJump = false;
                 jumpset = false;
             }
         }

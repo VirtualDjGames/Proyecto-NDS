@@ -13,6 +13,7 @@ public class EndingScript : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
+        Enemigo_1.activacion = false;
     }
 
 

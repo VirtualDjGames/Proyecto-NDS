@@ -13796,6 +13796,8 @@ MonoBehaviour:
   gravity: 20
   cam: {fileID: 5554331251778809358}
   volumeProfile: {fileID: 11400000, guid: 2e530096b629e8240991f80d3a8cf579, type: 2}
+  cronometro: 0
+  darkScreen: {fileID: 6975866239903519808}
 --- !u!114 &5879474607703211866
 MonoBehaviour:
   m_ObjectHideFlags: 0

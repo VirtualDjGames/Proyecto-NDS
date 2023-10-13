@@ -27,12 +27,10 @@ public class AutoMuteSFX3D : MonoBehaviour
         AudioSource.time = 0;
         AudioSource.PlayOneShot(Door[0]);
         AudioSource.PlayOneShot(Door[1]);
-        Debug.Log("ABIERTO");
     }
     public void CloseDoorSound()
     {
         AudioSource.time = 0;
         AudioSource.PlayOneShot(Door[2]);
-        Debug.Log("CERRADO");
     }
 }

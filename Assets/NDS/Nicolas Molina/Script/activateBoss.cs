@@ -12,6 +12,8 @@ public class activateBoss : MonoBehaviour
             Instantiate(boss, ubicacion.transform.position, transform.rotation);
 
             Enemigo_1.activacion = true;
+
+            gameObject.SetActive(false);
         }
         
     }
