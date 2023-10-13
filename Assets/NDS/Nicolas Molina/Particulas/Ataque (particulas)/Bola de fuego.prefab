@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1349181671222286466}
   - component: {fileID: 360274225552403034}
-  - component: {fileID: 2031962547801302493}
+  - component: {fileID: 3402478852554645197}
+  - component: {fileID: -5403470690312989636}
   m_Layer: 0
   m_Name: Bola de fuego
-  m_TagString: Untagged
+  m_TagString: Bola_de_Fuego
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,8 +48,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f0e5896968c08438afdb0a4a071c38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
---- !u!54 &2031962547801302493
+  speed: 30
+--- !u!135 &3402478852554645197
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158611700829194596}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &-5403470690312989636
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

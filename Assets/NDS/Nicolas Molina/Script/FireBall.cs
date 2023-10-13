@@ -7,7 +7,7 @@ public class FireBall : MonoBehaviour
     public float speed;
     void Update()
     {
-        this.GetComponent<Rigidbody>().AddForce(transform.forward);
+        this.GetComponent<Rigidbody>().AddForce(transform.forward*speed);
         Destroy(this.gameObject,5f);
     }
 }

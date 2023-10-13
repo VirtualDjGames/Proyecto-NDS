@@ -1703,7 +1703,7 @@ Transform:
   m_GameObject: {fileID: 5586723089612840997}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1528883528196183636}
@@ -1751,7 +1751,7 @@ MonoBehaviour:
   target: {fileID: 0}
   atacando: 0
   ataque: 0
-  distancia_ataque: 5
+  distancia_ataque: 10
   radio_vision: 0
   agente: {fileID: 8591864398421982173}
   bola_de_fuego: {fileID: 1158611700829194596, guid: c5621128bf1fa16458df19510b725a2f,

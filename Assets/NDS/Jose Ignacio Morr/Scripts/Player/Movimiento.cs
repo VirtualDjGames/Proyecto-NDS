@@ -38,6 +38,7 @@ public class Movimiento : MonoBehaviour
     public VolumeProfile volumeProfile;
     private Vignette vignetteHP;
 
+    public float cronometro;
 
     public static Vector3 move = Vector3.zero;
     private void Awake()
@@ -61,6 +62,8 @@ public class Movimiento : MonoBehaviour
 
     void Update()
     {
+        cronometro += Time.deltaTime;
+        Debug.Log(cronometro);
         if(Time.timeScale == 1) //Si el juego no esta pausado
         {
             h_mouse = mouseHorizontal * Input.GetAxis("Mouse X");
@@ -240,6 +243,33 @@ public class Movimiento : MonoBehaviour
             {
                 AudioPlay.DamageLive();
             }            
+        } 
+        if (other.gameObject.tag == "Bola_de_Fuego")
+        {
+            HP--;
+            //Sonido de Daño
+            if (HP !=0)
+            {
+                AudioPlay.DamageLive();
+            }
+            Destroy(other.gameObject);
+        } 
+       
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "charco_de_Fuego")
+        {
+            if (cronometro >= 3f)
+            {
+                HP--;
+                //Sonido de Daño
+                if (HP != 0)
+                {
+                    AudioPlay.DamageLive();
+                }
+                cronometro = 0;
+            }
         }
     }
 }

@@ -9665,6 +9665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 279467880454521600}
+  - component: {fileID: 8474636018826755576}
   m_Layer: 0
   m_Name: Invocacion
   m_TagString: Untagged
@@ -9689,8 +9690,20 @@ Transform:
   - {fileID: 8467397173935078022}
   - {fileID: 8958975880494161260}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8474636018826755576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5844734581171964203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5af0f147fbacec49b3cea042100f73f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6819574735083100826
 GameObject:
   m_ObjectHideFlags: 0
