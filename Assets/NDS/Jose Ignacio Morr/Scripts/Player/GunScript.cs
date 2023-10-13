@@ -36,7 +36,6 @@ public class GunScript : MonoBehaviour
         reloadingImage.fillAmount = 0.0f;
         reloadingImage.gameObject.SetActive(false);
         currentAmmo = maxAmmo;
-
         shootTime = Mathf.Clamp(shootTime, 0, 5.1f);
     }
 
@@ -128,7 +127,8 @@ public class GunScript : MonoBehaviour
             {
                 // Realiza aquí las acciones necesarias cuando se golpea a un enemigo
                 // Por ejemplo, daño al enemigo
-                Destroy(hit.collider.gameObject); // Prueba
+                //Destroy(hit.collider.gameObject); // Prueba
+                hit.collider.GetComponent<Enemy_MM>().TakeDamage();
             }
         }
         StartCoroutine("shoot_lights");

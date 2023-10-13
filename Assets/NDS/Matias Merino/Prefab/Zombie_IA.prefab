@@ -1251,7 +1251,7 @@ Transform:
   - {fileID: 772022477538903336}
   - {fileID: 2871919989946338265}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &22840509374051472
 Animator:
@@ -1310,6 +1310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseDistance: 15
   attackDistance: 3.5
+  vida: 3
 --- !u!136 &6947718460728721766
 CapsuleCollider:
   m_ObjectHideFlags: 0
