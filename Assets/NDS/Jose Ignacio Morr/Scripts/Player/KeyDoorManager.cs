@@ -10,6 +10,7 @@ public class KeyDoorManager: MonoBehaviour
     public GameObject grabKeyAdviser;
     public GameObject openDoorAdviser;
     public GameObject hasNoKeyAdviser;
+    AudioPlay AudioPlay;
 
     private InputsMap inputs;
     private bool isInteractuableKey = false;
@@ -23,6 +24,7 @@ public class KeyDoorManager: MonoBehaviour
     public void AddKey(string keyName)
     {
         keys.Add(keyName);
+        AudioPlay.Keys();
         keyAddedAdviser.SetActive(true);
         keyRemovedAdviser.SetActive(false);
     }
@@ -45,6 +47,7 @@ public class KeyDoorManager: MonoBehaviour
     {
         inputs = new InputsMap();
         inputs.Gameplay.Enable();
+        AudioPlay = GetComponent<AudioPlay>();
     }
 
     private void OnTriggerEnter(Collider other)

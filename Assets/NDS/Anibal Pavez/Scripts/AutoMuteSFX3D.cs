@@ -5,6 +5,7 @@ using UnityEngine;
 public class AutoMuteSFX3D : MonoBehaviour
 {
     AudioSource AudioSource;
+    public AudioClip[] Door;
     private void Start()
     {
         AudioSource = GetComponent<AudioSource>();
@@ -20,5 +21,18 @@ public class AutoMuteSFX3D : MonoBehaviour
         {
             AudioSource.UnPause();
         }
+    }
+    public void OpenDoor()
+    {
+        AudioSource.time = 0;
+        AudioSource.PlayOneShot(Door[0]);
+        AudioSource.PlayOneShot(Door[1]);
+        Debug.Log("ABIERTO");
+    }
+    public void CloseDoorSound()
+    {
+        AudioSource.time = 0;
+        AudioSource.PlayOneShot(Door[2]);
+        Debug.Log("CERRADO");
     }
 }
