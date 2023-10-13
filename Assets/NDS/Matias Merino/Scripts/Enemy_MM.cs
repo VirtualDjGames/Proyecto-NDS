@@ -11,6 +11,10 @@ public class Enemy_MM : MonoBehaviour
     public float chaseDistance = 10f;
     public float attackDistance = 2f;
     private bool isAttacking = false;
+    public int vida = 3;
+    private Collider col;
+    GameObject mano;
+     
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +22,8 @@ public class Enemy_MM : MonoBehaviour
         enemy_MM = GetComponent<NavMeshAgent>();
         playerTarget = GameObject.FindWithTag("Player").transform;
         enemyAnimator = GetComponent<Animator>();
+        col = GetComponent<Collider>();
+        mano = transform.GetChild(0).transform.GetChild(2).transform.GetChild(0).transform.GetChild(0).transform.GetChild(2).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject;
 
         if (playerTarget == null)
         {
@@ -28,7 +34,7 @@ public class Enemy_MM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerTarget != null)
+        if (playerTarget != null && vida > 0)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, playerTarget.position);
 
@@ -55,11 +61,25 @@ public class Enemy_MM : MonoBehaviour
                 Attack();
             }
         }
+
+        if (vida <= 0)
+        {
+            enemyAnimator.SetBool("IsDead", true);
+            col.enabled = false;
+            mano.SetActive(false);
+            enemy_MM.ResetPath();
+        }
     }
 
     public void EndAttackAnimation()
     {
-        enemyAnimator.SetBool("IsAttacking", false);
+        enemyAnimator.SetBool("IsAttacking", true);
+    }
+
+    public void TakeDamage()
+    {
+        vida--;
+        //enemyAnimator.SetBool("IsDamaged",true);
     }
 
     // Lógica para el ataque (puedes personalizar esto).
